@@ -28,6 +28,7 @@ const RestaurantsSchema = new mongoose.Schema({
   //evaluation:[] //lista das avaliações individuais
 
   //cardápio
+  /*
   menu:[{
     type: String, //tipo => lanche, refeições, bebidas
     image: String, //foto do produto
@@ -49,6 +50,8 @@ const RestaurantsSchema = new mongoose.Schema({
     note: String, // observação do pedido
     reason: String //motivo do cancelamento 
   }],
+
+  */
 
 
   createdAt: { //data de criação no sistema
