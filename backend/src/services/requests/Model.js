@@ -8,8 +8,12 @@ const RequestSchema = new mongoose.Schema({
     required: false
   }, 
 
-  client: String, //cliente que comprou
-  
+  client: { //id do cliente que fez o pedido
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: false
+  }, 
+
   basket: [{ //preenchido com os ids dos produtos do menu
     item: {
       type: mongoose.Schema.Types.ObjectId,
@@ -41,7 +45,7 @@ const RequestSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  active:{ //define se esta ativo
+  active:{ //define se esta ativo => após a entrega deve ser desativado
     type: Boolean,
     default: true
   }
