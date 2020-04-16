@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 //pedidos
 const RequestSchema = new mongoose.Schema({
-  restaurant: { //id do restaurant
+  restaurant: { //id do user restaurant
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Restaurant',
+    ref: 'User',
     required: false
   }, 
 
