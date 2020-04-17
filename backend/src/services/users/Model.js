@@ -1,13 +1,26 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
   email: String,
-  password: String,
+  password: {
+    type: String,
+    select: false
+  },
   cellPhone: String, //celular
   restaurant: { //se for restaurante
     type: Boolean,
     default: false
   }, 
+
+  autenticado: {
+    type: Boolean,
+    default: false
+  },
+  token: {
+    type: String,
+    default: ''
+  },
 
   //informações pessoais
   avatar: String,
@@ -46,6 +59,17 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   }
+});
+
+UserSchema.pre('save', async function (next) { //executada antes de salvar o User
+  let user = this
+
+  if (!user.isModified('password')) { //se o User não estiver sendo modificado
+      return next()
+  }
+
+  user.password = await bcrypt.hash(user.password, 10)
+  return next()
 });
 
 module.exports = mongoose.model('User', UserSchema);
