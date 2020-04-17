@@ -16,7 +16,9 @@ UserRoutes.post('/store', UserController.store);
 
 UserRoutes.put('/update', UserController.update);
 
-UserRoutes.delete('/delete', UserController.delete)
+UserRoutes.delete('/delete', UserController.delete);
+
+UserRoutes.get('/index', UserController.index); //lista todos
 
 module.exports = UserRoutes;
 

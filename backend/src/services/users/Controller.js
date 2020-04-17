@@ -85,5 +85,14 @@ module.exports = {
         } catch (err) {
             return res.json({ error: `Putz, parece que ocorreu um erro ao remover: ${error} ` });
         }
+  },
+  async index(req, res){
+    try{
+      const obj = await Obj.find({});
+
+      return res.json({obj});
+    }catch(error){
+      return res.json({ error: `Ocorreu um erro ao listar Users: ${error}` });
+    }
   }
 };
