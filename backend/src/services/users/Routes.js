@@ -1,10 +1,10 @@
 const express = require('express');
 
-const UserRoutes = express.Router();
+const Routes = express.Router();
 
-const UserController = require('./Controller');
+const Controller = require('./Controller');
 
-UserRoutes.get('/', (req, res) => {
+Routes.get('/', (req, res) => {
   return res.json({
       message: 'Você está em /users',
       //localsData: res.locals.auth_data
@@ -12,15 +12,15 @@ UserRoutes.get('/', (req, res) => {
 });
 
 
-UserRoutes.post('/store', UserController.store);
+Routes.post('/store', Controller.store);
 
-UserRoutes.put('/update', UserController.update);
+Routes.put('/update', Controller.update);
 
-UserRoutes.delete('/delete', UserController.delete);
+Routes.delete('/delete', Controller.delete);
 
-UserRoutes.get('/index', UserController.index); //lista todos
+Routes.get('/index', Controller.index); //lista todos
 
-module.exports = UserRoutes;
+module.exports = Routes;
 
 
 

@@ -29,18 +29,6 @@ const RequestSchema = new mongoose.Schema({
   note: String, // observação do pedido
   reason: String, //motivo do cancelamento 
 
-  //cardápio
-  menu:[{
-    type: String, //tipo => lanche, refeições, bebidas
-    image: String, //foto do produto
-    price: Number, //preço
-    title: String, //titulo do produto
-    description: String, //descrição 
-    preparation: String, //tempo de preparo
-    evaluation: Number //avaliação do prato
-  }],
-
-
   createdAt: { //data de criação no sistema
     type: Date,
     default: Date.now

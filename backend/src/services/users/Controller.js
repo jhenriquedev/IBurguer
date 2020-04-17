@@ -50,7 +50,7 @@ module.exports = {
       _id: body._id 
     };
 
-    if(!req.body._id) return res.json({ error: 'É necessário informar um id user.' });
+    if(!req.body._id) return res.json({ error: 'É necessário informar um id válido.' });
     if(!req.body.password) return res.json({ error: 'Oops... Não pode esquecer o password...' });
 
     try{
@@ -73,7 +73,7 @@ module.exports = {
   },
   async delete(req, res){
     const { _id } = req.headers
-        if (!_id) return res.json({ error: 'É necessário informar o id do user.' });
+        if (!_id) return res.json({ error: 'É necessário informar um id válido.' });
         try {
             let obj = await Obj.findOne({_id});
             if(!obj) return res.json({error: 'User não encontrado.'});
