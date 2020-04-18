@@ -1,5 +1,7 @@
 const Obj = require('./Model'); //importação do modelo de dados
 
+const User = require('../users/Model');
+
 module.exports = {
   async store(req, res){ //adiciona novos 
     const body = req.body;
@@ -16,14 +18,19 @@ module.exports = {
       //salesCount: body.salesCount 
     };
 
-    if(!req.body.title) return res.json({ error: 'Informe um titulo bem criativo!' });
-    if(!req.body.price) return res.json({ error: 'Não esqueça de informar um preço.' });
+    if(!body.title) return res.json({ error: 'Informe um titulo bem criativo!' });
+    if(!body.price) return res.json({ error: 'Não esqueça de informar um preço.' });
 
     try{
+      if(!await User.findById({ _id: body.restaurant}))
+        return res.json({ error: 'Restaurante não encontrado em nossa base de dados.' });
+
       if (await Obj.findOne({ restaurant:data.restaurant, title:data.title })) 
         return res.json({ error: 'Oops.. Parece que já existe um produto com este título...' });
       
-      let obj = await Obj.create(data);
+      let obj = await(Obj.create(data));
+      obj = await (Obj.findOne({_id: obj._id})).populate('restaurant');
+      //let obj = await (await Obj.create(data)).populate('restaurant');
 
       return res.json(obj);
 
@@ -36,8 +43,9 @@ module.exports = {
   async update(req, res){
     const body = req.body;
 
+    /*
     const data = { //filtrando os dados que podem ser inseridos
-      restaurant: body.restaurant, //id do usuário 
+      //restaurant: body.restaurant, //id do usuário 
       type: body.type, //lanche, refeições, bebidas
       //image: body.image, => foto do produto
       price: body.price, 
@@ -48,17 +56,36 @@ module.exports = {
       salesCount: body.salesCount,
       _id: body._id  
     };
+    */
 
-    if(!req.body._id) return res.json({ error: 'É necessário informar um id válido.' });
-    if(!req.body.title) return res.json({ error: 'Oops... Não pode esquecer o título...' });
-    if(!req.body.price) return res.json({ error: 'Oops... Não pode esquecer o preço...' });
+    if(!body._id) return res.json({ error: 'É necessário informar um id válido.' });
+    if(!body.title) return res.json({ error: 'Oops... Não pode esquecer o título...' });
+    if(!body.price) return res.json({ error: 'Oops... Não pode esquecer o preço...' });
 
     try{
-      //let obj = await Obj.findById({ _id: data._id });
-      if(!await Obj.findById({ _id: data._id }))
+      let obj = await Obj.findById({ _id: body._id });
+      if(!obj)
         return res.json({ error: 'Não encontramos este produto em nossa base de dados. Informe um id válido.' });
+      
+      let obj2 = await Obj.findOne({ title:body.title });
+      if (obj2){
+        if(body._id != obj2._id){
+          return res.json({ error: 'Oops.. Parece que já existe um produto com este título...' });
+        }
+      }
+      
+      obj = {
+        type: body.type ? body.type : obj.type,
+        price: body.price ? body.price : obj.price,
+        title: body.title ? body.title : obj.title,
+        description: body.description ? body.description : obj.description,
+        preparation: body.preparation ? body.preparation : obj.preparation,
+        evaluation: body.evaluation ? body.evaluation : obj.evaluation,
+        salesCount: body.salesCount ? body.salesCount : obj.salesCount,
+        active: body.active ? body.active : obj.active
+      }
 
-      let obj = await Obj.findByIdAndUpdate({ _id:data._id }, data, { new: true });
+      obj = await Obj.findByIdAndUpdate({ _id:body._id }, obj, { new: true }).populate('restaurant');
       
       return res.json(obj);
       
@@ -75,7 +102,7 @@ module.exports = {
             if(!obj) return res.json({error: 'Produto não encontrado.'});
 
             await Obj.findOneAndRemove({ _id });
-            const objs = await Obj.find(); //busca a lista novamente
+            const objs = await Obj.find().populate('restaurant'); //busca a lista novamente
             return res.json(objs);
 
         } catch (err) {
@@ -84,9 +111,9 @@ module.exports = {
   },
   async index(req, res){
     try{
-      const obj = await Obj.find({});
+      const obj = await Obj.find({}).populate('restaurant');
 
-      return res.json({obj});
+      return res.json(obj);
     }catch(error){
       return res.json({ error: `Ocorreu um erro ao listar: ${error}` });
     }

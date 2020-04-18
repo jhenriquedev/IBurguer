@@ -4,6 +4,8 @@ const router = express();
 
 //importação de serviços
 const UserRoutes = require('./services/users/Routes');
+const ItemMenuRoutes = require('./services/itemMenu/Routes');
+const RequestsRoutes = require('./services/requests/Routes');
 
 //rotas
 router.get('/', (req, res) => {
@@ -11,5 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/users', UserRoutes);
+router.use('/item-menu', ItemMenuRoutes);
+router.use('/requests', RequestsRoutes);
 
 module.exports = router;

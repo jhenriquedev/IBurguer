@@ -15,11 +15,9 @@ const RequestSchema = new mongoose.Schema({
   }, 
 
   basket: [{ //preenchido com os ids dos produtos do menu
-    item: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ItemMenu',
-      required: false
-    }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ItemMenu',
+    required: false
   }], 
 
   paymentMethod: String, //forma de pagamento escolhida pelo cliente

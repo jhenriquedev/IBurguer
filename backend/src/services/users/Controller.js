@@ -90,7 +90,7 @@ module.exports = {
     try{
       const obj = await Obj.find({});
 
-      return res.json({obj});
+      return res.json(obj);
     }catch(error){
       return res.json({ error: `Ocorreu um erro ao listar Users: ${error}` });
     }
