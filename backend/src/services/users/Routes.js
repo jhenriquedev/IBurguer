@@ -1,8 +1,12 @@
 const express = require('express');
+const multer = require('multer');
 
 const Routes = express.Router();
 
 const Controller = require('./Controller');
+
+const Uploads = require('../../middlewares/uploads');
+const upload = multer(Uploads);
 
 Routes.get('/', (req, res) => {
   return res.json({
@@ -14,7 +18,7 @@ Routes.get('/', (req, res) => {
 
 Routes.post('/store', Controller.store);
 
-Routes.put('/update', Controller.update);
+Routes.put('/update', upload.single('thumbnail'), Controller.update);
 
 Routes.delete('/delete', Controller.delete);
 

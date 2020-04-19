@@ -11,7 +11,7 @@ const ItemMenuSchema = new mongoose.Schema({
     type: String,
     default: 'snack'
   }, //tipo => lanche => snack, refeições => meals, bebidas => drinks
-  image: String, //foto do produto
+  thumbnail: String, //foto do produto
   price: Number, //preço
   title: String, //titulo do produto
   description: String, //descrição 

@@ -6,6 +6,8 @@ const router = express();
 const UserRoutes = require('./services/users/Routes');
 const ItemMenuRoutes = require('./services/itemMenu/Routes');
 const RequestsRoutes = require('./services/requests/Routes');
+const ThumbsRoutes = require('./services/thumbnails/Routes');
+
 
 //rotas
 router.get('/', (req, res) => {
@@ -15,5 +17,6 @@ router.get('/', (req, res) => {
 router.use('/users', UserRoutes);
 router.use('/item-menu', ItemMenuRoutes);
 router.use('/requests', RequestsRoutes);
+router.use('/thumbs', ThumbsRoutes);
 
 module.exports = router;

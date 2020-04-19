@@ -17,13 +17,14 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+
   token: {
     type: String,
     default: ''
   },
 
   //informações pessoais
-  avatar: String,
+  thumbnail: String, //foto de perfil
   name: String,
 
   //informações comerciais
