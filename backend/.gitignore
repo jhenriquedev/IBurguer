@@ -16,10 +16,3 @@ docker-compose.yml
 
 #Pastas ignoradas
 backup
-tmp/uploads/*.jpeg
-tmp/uploads/*.jpg
-tmp/uploads/*.png
-tmp/uploads/*.gif
-tmp/uploads/*.tiff
-tmp/uploads/*.pdf
-tmp/uploads/*.*
