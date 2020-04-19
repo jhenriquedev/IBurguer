@@ -8,7 +8,7 @@ const { promisify } = require('util');
 
 //const s3 = new aws.S3();    //lê as variaveis de ambiente automaticamente
 
-const ThumbnailSchema = new mongoose.Schema({
+const ThumbSchema = new mongoose.Schema({
     name: String, //nome original do arquivo
     size: Number, //tamanho do arquivo
     key: String, //nome gerado pelo hash
@@ -17,19 +17,19 @@ const ThumbnailSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-})
+});
 
 //utiliza-se function para que se possa 
-ThumbnailSchema.pre('save', function(){
+ThumbSchema.pre('save', function(){
     if(!this.url){ //cria uma url antes de salvar pegando a key
         this.url=`${process.env.APP_URL}/files/${this.key}`
     }
-})
+});
 
 //Verifica se o arquivo está sendo deletado do banco de dados
 //e também remove no aws
-ThumbnailSchema.pre('remove', function(){
-  return promisify(fs.unlink)(path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', this.key))
+ThumbSchema.pre('remove', function(){
+  return promisify(fs.unlink)(path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', this.key));
   /*
     if (process.env.STORAGE_TYPE === 's3'){ //se for um storage do tipo s3
         return s3.deleteObject({
@@ -45,4 +45,4 @@ ThumbnailSchema.pre('remove', function(){
 })
 
 
-module.exports = mongoose.model('Thumb', ThumbnailSchema)
+module.exports = mongoose.model('Thumb', ThumbSchema);

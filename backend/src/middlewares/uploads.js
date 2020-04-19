@@ -47,8 +47,7 @@ module.exports = {
     //destino do arquivo quando fizer o upload
     dest: path.resolve(__dirname, '..','..','tmp', 'uploads' ),
     //forma de storage com o multer
-    storage: storageTypes[process.env.STORAGE_LOCAL],
-    
+    storage: storageTypes[process.env.STORAGE_LOCAL],    
 
     //varias configurações de limites do envio
     limits: {
