@@ -1,3 +1,4 @@
+require('dotenv').config();
 //Importações
 const express = require('express');
 const morgan = require('morgan');
