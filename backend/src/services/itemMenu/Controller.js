@@ -126,7 +126,7 @@ module.exports = {
 
       const obj = await Obj.paginate({}, { 
         page, 
-        limit: 2, 
+        limit: 5, 
         populate: 'restaurant' 
       });
 

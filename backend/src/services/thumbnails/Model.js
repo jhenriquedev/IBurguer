@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 //const aws = require('aws-sdk')
 
 //para trabalhar no ambiente local
@@ -18,6 +19,8 @@ const ThumbSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+
+ThumbSchema.plugin(mongoosePaginate);
 
 //utiliza-se function para que se possa 
 ThumbSchema.pre('save', function(){

@@ -116,8 +116,17 @@ module.exports = {
         }
   },
   async index(req, res){
+    
+    const { page = 1 } = req.query;
+
     try{
-      const obj = await Obj.find({}).populate('restaurant client basket');
+      //const obj = await Obj.find({}).populate('restaurant client basket');
+
+      const obj = await Obj.paginate({}, { 
+        page, 
+        limit: 5, 
+        populate: 'restaurant client basket' 
+      });
 
       return res.json(obj);
     }catch(error){
