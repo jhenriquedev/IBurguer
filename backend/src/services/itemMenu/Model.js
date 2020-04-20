@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
 const ItemMenuSchema = new mongoose.Schema({
   restaurant: { //id do user restaurant
@@ -29,5 +30,8 @@ const ItemMenuSchema = new mongoose.Schema({
     default: true
   }
 });
+
+//plugin do paginate
+ItemMenuSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('ItemMenu', ItemMenuSchema);

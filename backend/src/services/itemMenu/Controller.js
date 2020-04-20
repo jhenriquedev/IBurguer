@@ -110,8 +110,25 @@ module.exports = {
         }
   },
   async index(req, res){
+    //paginação de registros
+    const { page = 1 } = req.query; //se não for informado o número de página, por padrão inicia com 1
+
     try{
-      const obj = await Obj.find({}).populate('restaurant');
+
+      /*
+      const obj = await Obj.find({})
+        //.populate('restaurant') //popula com os restaurantes
+        .paginate({}, { page, limit: 5 })
+        //.limit(5) //limita 5 registros por vez
+        //.offset((page - 1) * 5) //avança 5 registros por vez
+        //.sort({ _id: -1 }); //ordena pelos mais recentes
+      */
+
+      const obj = await Obj.paginate({}, { 
+        page, 
+        limit: 2, 
+        populate: 'restaurant' 
+      });
 
       return res.json(obj);
     }catch(error){
