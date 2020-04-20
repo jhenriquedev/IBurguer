@@ -3,7 +3,7 @@ const mongoosePaginate = require('mongoose-paginate');
 const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
-  email: String,
+  email: String, //não pode ser mudado
   password: {
     type: String,
     select: false
@@ -25,19 +25,31 @@ const UserSchema = new mongoose.Schema({
   },
 
   //informações pessoais
-  thumbnail: String, //foto de perfil
+  thumbnail: { //id da foto de perfil
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Thumb',
+    required: false
+  }, 
   name: String,
 
   //informações comerciais
-  logo: String, //imagem de perfil do restaurante
-  banner: String, //imagem promocional
+  logo: { //id da imagem de perfil do restaurante
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Thumb',
+    required: false
+  }, //imagem de perfil do restaurante
+  banner: { //id da imagem promocional
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Thumb',
+    required: false
+  }, //imagem promocional
   //name: String, //nome e titulo do restaurante
   description: String, //descrição
   expedient: String, //dia e horário de expediente normal
 
   //outras informações
-  paymentMethods: String, // formas de pagamento aceitas => credito, debito, cash
-  deliveryFee: String, //taxa de entrega
+  paymentMethods: [String], // formas de pagamento aceitas => credito, debito, cash
+  deliveryFee: Number, //taxa de entrega
   deliveryTime: String, //tempo de entrega
   evaluationTotal: Number, //avaliação => 0 - 5 estrelas => média das avaliações gerais
   //evaluation:[] //lista das avaliações individuais

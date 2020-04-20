@@ -13,7 +13,7 @@ module.exports = {
   async store(req, res){ //adiciona novos users
     const body = req.body;
     const data = { //filtrando os dados que podem ser inseridos
-      email: body.email, 
+      email: body.email, //não pode ser mudado
       password: body.password, 
       cellPhone: body.cellPhone, 
       restaurant: body.restaurant 
@@ -43,26 +43,50 @@ module.exports = {
   },
   async update(req, res){
     const body = req.body;
-    const data = { //filtrando os dados que podem ser inseridos
-      password: body.password, 
-      cellPhone: body.cellPhone, 
-      restaurant: body.restaurant,
-      _id: body._id 
-    };
 
     if(!req.body._id) return res.json({ error: 'É necessário informar um id válido.' });
     if(!req.body.password) return res.json({ error: 'Oops... Não pode esquecer o password...' });
 
     try{
-      let obj = await Obj.findById({ _id: data._id }).select('+password');
+      let obj = await Obj.findById({ _id: body._id }).select('+password');
       if(req.body.password){ //se o password tiver sido passado
         if(obj.password){ //se o user.password existir
           if (req.body.password != obj.password) { //se forem diferentes
-            data.password = await bcrypt.hash(data.password, 10);
+            body.password = await bcrypt.hash(body.password, 10);
           };
         };
       };
-      obj = await Obj.findByIdAndUpdate({ _id:data._id }, data, { new: true });
+
+      obj = {
+        password: body.password ? body.password : obj.password, 
+        cellPhone: body.cellPhone ? body.cellPhone : obj.cellPhone, 
+        restaurant: body.restaurant === 1 ? true : false,
+      
+        thumbnail: body.thumbnail ? body.thumbnail : obj.thumbnail,
+        logo: body.logo ? body.logo : obj.logo,
+        banner: body.banner ? body.banner : obj.banner,
+        description: body.description ? body.description : obj.description, 
+
+        expedient: body.expedient ? body.expedient : obj.expedient,
+        paymentMethods: body.paymentMethods ? body.paymentMethods : obj.paymentMethods,
+        deliveryFee: body.deliveryFee ? body.deliveryFee : obj.deliveryFee,
+        deliveryTime: body.deliveryTime ? body.deliveryTime : obj.deliveryTime,
+        evaluationTotal: body.evaluationTotal ? body.evaluationTotal : obj.evaluationTotal,
+
+        cep: body.cep ? body.cep : obj.cep,
+        publicPlace: body.publicPlace ? body.publicPlace : obj.publicPlace, //logradouro
+        complement: body.complement ? body.complement : obj.complement, //complemento
+        neighborhood: body.neighborhood ? body.neighborhood : obj.neighborhood, //bairro
+        city: body.city ? body.city : obj.city, //cidade
+        uf: body.uf ? body.uf : obj.uf, //estado
+        number: body.number ? body.number : obj.number, //numero
+
+        active: body.active ? body.active : obj.active
+      };
+
+      obj = await Obj.findByIdAndUpdate({ _id:body._id }, obj, { new: true });
+
+      obj = await Obj.findOne({_id: body._id}).populate('thumbnail logo banner');
       
       return res.json(obj);
       
@@ -94,6 +118,7 @@ module.exports = {
       const obj = await Obj.paginate({}, { 
         page, 
         limit: 5, 
+        populate: 'thumbnail logo banner'
       });
 
       return res.json(obj);
@@ -108,7 +133,9 @@ module.exports = {
 
     try{
       
-      const obj = await Obj.findById(_id);
+      const obj = await Obj.findById(_id)
+        .populate('thumbnail logo banner');
+
       return res.json(obj);
 
     }catch(error){

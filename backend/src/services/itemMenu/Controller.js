@@ -76,6 +76,7 @@ module.exports = {
       
       obj = {
         type: body.type ? body.type : obj.type,
+        thumbnail: body.thumbnail ? body.thumbnail : obj.thumbnail,
         price: body.price ? body.price : obj.price,
         title: body.title ? body.title : obj.title,
         description: body.description ? body.description : obj.description,
