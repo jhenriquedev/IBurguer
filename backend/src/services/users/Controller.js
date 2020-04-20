@@ -100,5 +100,19 @@ module.exports = {
     }catch(error){
       return res.json({ error: `Ocorreu um erro ao listar Users: ${error}` });
     }
+  },
+  async show(req, res){
+    const { _id } = req.headers;
+
+    if (!_id) return res.json({ error: 'Informe um _id válido.' });
+
+    try{
+      
+      const obj = await Obj.findById(_id);
+      return res.json(obj);
+
+    }catch(error){
+      return res.json({ error: `Id não encontrado: ${error}` });
+    }
   }
 };
