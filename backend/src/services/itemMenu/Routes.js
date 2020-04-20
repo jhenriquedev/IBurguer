@@ -20,4 +20,6 @@ Routes.delete('/delete', Controller.delete);
 
 Routes.get('/index', Controller.index); //lista todos
 
+Routes.get('/find-one', Controller.show); //busca 1 por id
+
 module.exports = Routes;
