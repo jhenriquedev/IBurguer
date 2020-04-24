@@ -1,0 +1,21 @@
+.input-box{
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  color: #a1aaae;
+}
+
+.input-box input{
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.input-box span{
+  color: #e8273b;
+}

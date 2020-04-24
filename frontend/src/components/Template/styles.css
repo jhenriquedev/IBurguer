@@ -1,0 +1,29 @@
+.page{
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.header{
+  height: 15vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  padding-left: 40px;
+
+}
+
+.content{
+  height: 75vh;
+}
+
+.footer{
+  height: 10vh;
+}

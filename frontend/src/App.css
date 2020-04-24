@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+/*Importação da fonte roboto*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body, #root{
+  height: 100vh;
+  font-size: 62.5%;
+  overflow: hidden; /*não permite scroll*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  background-color: #FBFBFD;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/*Definindo a fonte roboto para input, button, body*/
+body, input, button, label, h1, h2, h3, h4, h5, h6, span, p, a {
+  font-family: 'Roboto', Arial, Arial, Helvetica, sans-serif;
+  font-size: 1.6em;
 }
 
-.App-link {
-  color: #61dafb;
+h1{font-size: 4.8em;}
+h2{font-size: 3.8em;}
+h3{font-size: 2.8em;}
+h4{font-size: 1.8em;}
+h5{font-size: 1.8em; font-weight: bolder;}
+h6{font-size: 1.6em;}
+p{font-size: 1.6em;}
+span{font-size: 1.4em;}
+label{font-size: 1.6em;}
+
+h1{
+  color: #323738;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2{
+  color: #a1aaae;
+}
+
+a{
+  text-decoration: none;
+  color: #a1aaae;
+}
+a:hover{
+  color: #e79614;
+}
+
+
+button{
+  border-radius: 4px;
+  height: 50px;
+  margin-top: 20px;
+
+  border: none;
+  border: 1px solid #d3d9d6;
+
+  cursor: pointer;
+
+  font-weight: bold;
+  color: #a1aaae;
+}
+
+button:hover{
+  background-color: #e79614;
+  color: #fff;
+}
+
+.primary-button{
+  background-color: #e79614;
+  color: #fff;
+  border: none;
+}
+
+.primary-button:hover{
+  background-color: #945e07;
+  color: #fff;
+}
+
+input{
+  border-radius: 4px;
+  height: 50px;
+  margin-top: 20px;
+
+  border: none;
+  border: 1px solid #d3d9d6;
+
+  cursor: pointer;
+
+  font-weight: bold;
+  color: #414a4e;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  font-weight: lighter;
+}
+
+input::placeholder{
+  color: #a1aaae;
+}
+
+input:focus{
+  border: 1px solid #e79614;
 }
