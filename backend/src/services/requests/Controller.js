@@ -14,7 +14,7 @@ module.exports = {
       basket: body.basket,
       paymentMethod: body.paymentMethod, //forma de pagamento escolhida pelo cliente
       total: body.total, //valor total
-      status: 'Em análise', //status atual do pedido => em analise, preparação, encaminhado, entregue, cancelado pelo estabelecimento, cancelado pelo cliente
+      status: 'Aguardando', //status atual do pedido => em analise, preparação, encaminhado, entregue, cancelado pelo estabelecimento, cancelado pelo cliente
       note: body.note, //observação do pedido
     };
 
@@ -58,7 +58,7 @@ module.exports = {
       paymentMethod: body.paymentMethod, //forma de pagamento escolhida pelo cliente
       evaluation: body.evaluation, //avaliação do pedido
       total: body.total, //valor total
-      status: body.status, //status atual do pedido => em preparação, encaminhado, entregue, cancelado pelo estabelecimento, cancelado pelo cliente
+      status: body.status, //status atual do pedido => aguardando,  em preparação, encaminhado, entregue, cancelado pelo estabelecimento, cancelado pelo cliente
       note: body.note, //observação do pedido
       reason: body.reason, //motivo do cancelamento 
       _id: body._id

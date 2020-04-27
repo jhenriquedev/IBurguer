@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -30,12 +31,13 @@ export default props => {
         }
         <button 
           className="primary-button"
+          onClick={button.onClick}
         >
           {button.text}
         </button>
-        <a href={a.href}>
+        <Link to={a.href}>
           {a.text}
-        </a>
+        </Link>
       </form>
     </div>
   );

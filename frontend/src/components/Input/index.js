@@ -8,7 +8,8 @@ export default props => {
     type,
     placeholder,
     required,
-    info
+    info,
+    value
   } = props.configs;
 
   return(
@@ -19,6 +20,7 @@ export default props => {
         id={label}
         placeholder={ placeholder }
         required={required}
+        value={value}
       />
       <span>{info}</span>
     </div>

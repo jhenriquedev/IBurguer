@@ -7,14 +7,16 @@ import Logo from '../Logo';
 export default props => {
   return(
     <div className="page">
-      <div className="header">
+      <div className={
+        props.header ? props.header : "header"
+      }>
         <Logo />
+        {props.tools}
       </div>
-      <div className="content">
+      <div className={
+        props.header ? 'content-dashboard' :"content"
+      }>
         {props.children}
-      </div>
-      <div className="footer">
-        {props.footer}
       </div>
     </div>
   );

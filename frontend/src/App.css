@@ -83,12 +83,22 @@ button:hover{
   color: #fff;
 }
 
+.secondary-button{
+  background-color: #e8273b;
+  color: #fff;
+  border: none;
+}
+
+.secondary-button:hover{
+  background-color: #be1f2f;
+  color: #fff;
+}
+
 input{
   border-radius: 4px;
   height: 50px;
   margin-top: 20px;
 
-  border: none;
   border: 1px solid #d3d9d6;
 
   cursor: pointer;
@@ -96,10 +106,12 @@ input{
   font-weight: bold;
   color: #414a4e;
 
-  padding-left: 20px;
+  padding-left: 25px;
   padding-right: 20px;
 
   font-weight: lighter;
+
+  caret-color: #e79614;
 }
 
 input::placeholder{
@@ -108,4 +120,12 @@ input::placeholder{
 
 input:focus{
   border: 1px solid #e79614;
+}
+
+.primmary{
+  color:  #e79614;
+}
+
+.red{
+  color: #e8273b;
 }

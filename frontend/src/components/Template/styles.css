@@ -20,10 +20,24 @@
 
 }
 
-.content{
-  height: 75vh;
+.header-dashboard{
+  height: 10vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  padding-left: 40px;
+
+  border-bottom: 1px solid #d3d9d6;
 }
 
-.footer{
-  height: 10vh;
+.content{
+  height: 85vh;
+}
+
+.content-dashboard{
+  height: 90vh;
 }

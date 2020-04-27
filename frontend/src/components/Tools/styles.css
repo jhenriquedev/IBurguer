@@ -1,0 +1,48 @@
+.tools{
+  height: 100%;
+  width: 90%;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding-left: 40px;
+}
+
+.tools button{
+  border: none;
+  background-color: transparent;
+  margin: 0;
+
+  font-weight: lighter;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding-right: 1px;
+  padding-left: 10px;
+
+  margin-left: 10px;
+
+  color: #1d2026;
+}
+
+.tools button span{
+  font-size: 1em;
+}
+
+.tools button:hover{
+  background-color: transparent;
+  color: #e8273b;
+}
+
+.tools button:hover .btn-icon{
+  color: #e8273b;
+}
+
+.btn-icon{
+  margin-right: 5px;
+}
