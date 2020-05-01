@@ -3,9 +3,9 @@ import { Redirect } from 'react-router';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 //pages
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
+import Dashboard from './components/pages/Dashboard';
 
 
 export default () => {
@@ -21,4 +21,4 @@ export default () => {
       </Switch>
     </BrowserRouter>
   )
-}
+};
