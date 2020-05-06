@@ -9,6 +9,8 @@ import Foto from '../assets/X-Burguer-PNG-1009x1024.png';
 import Page from './templates/Page';
 import LoginForm from './templates/LoginForm';
 import List from './templates/List';
+import RequestItem from './templates/RequestItem';
+import MenuItem from './templates/MenuItem';
 import ListItem from './templates/ListItem';
 import Tools from './templates/Tools';
 import View from './templates/View';
@@ -33,6 +35,8 @@ const TEMPLATES = {
   PAGE: props => <Page config={props.config} />,
   LOGIN_FORM: props => <LoginForm config={props.config} />,
   LIST: props => <List config={props.config} />,
+  REQUEST_ITEM: props => <RequestItem config={props.config} />,
+  MENU_ITEM: props => <MenuItem config={props.config} />,
   LIST_ITEM: props => <ListItem config={props.config} />,
   TOOLS: props => <Tools config={props.config} />,
   VIEW: props => <View config={props.config} />,
@@ -54,5 +58,4 @@ export {
   ASSETS,
   TEMPLATES,
   UI
-
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   FiUser,
-  FiDollarSign,
+  FiShoppingCart,
   FiBookOpen,
   FiFileText,
   FiLogOut,
@@ -14,7 +14,7 @@ import { Navegar } from "../../../miscelaneous/util";
 import { TEMPLATES, ASSETS, UI } from "../../summary";
 
 export default ({ history }) => {
-  const [view, setView] = useState(3); //começa pela view pedidos
+  const [view, setView] = useState(2); //começa pela view pedidos
 
   const tools = (
     <TEMPLATES.TOOLS
@@ -32,7 +32,7 @@ export default ({ history }) => {
         },
         {
           icon: (
-            <FiDollarSign
+            <FiShoppingCart
               size={24}
               className={`${view === 1 ? "primmary" : ""} btn-icon`}
             />
@@ -73,10 +73,7 @@ export default ({ history }) => {
     />
   );
 
-  const listConfig = {
-    summary: "",
-    summaryText: `Você possui ${9} pedidos! Não deixe seus clientes esperando.`,
-    list: [
+  /*
       {
         _id: "0",
         title: "Teste de lista",
@@ -96,35 +93,126 @@ export default ({ history }) => {
       { _id: "6", title: "Teste de lista" },
       { _id: "7", title: "Teste de lista" },
       { _id: "8", title: "Teste de lista" },
+  */
+
+  const listRequestsConfig = {
+    summary: "",
+    summaryText: `Você possui ${9} pedidos! Não deixe seus clientes esperando.`,
+    title: 'Pedidos',
+    tools: [
+      <UI.BUTTON key={0} config={{ text: "Todos", className:'active-button' }} />,
+      <UI.BUTTON key={1} config={{ text: "Aguardando" }} />,
+      <UI.BUTTON key={2} config={{ text: "Análise" }} />,
+      <UI.BUTTON key={3} config={{ text: "Preparando" }} />,
+      <UI.BUTTON key={4} config={{ text: "Encaminhados" }} />,
+      <UI.BUTTON key={5} config={{ text: "Cancelados" }} />,
+    ],
+    list: [
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.REQUEST_ITEM
+        config={{
+          title: "",
+        }}
+      />,
     ],
   };
 
-  const listConfigMenu = {
-    summary: "",
-    summaryText: `Você possui ${9} pedidos! Não deixe seus clientes esperando.`,
+  const listMenuConfig = {
+    summary: 'none',
+    summaryText: ``,
+    title: 'Cardápio',
+    tools: [
+      <UI.BUTTON key={0} config={{ text: "Todos", className:'active-button' }} />,
+      <UI.BUTTON key={1} config={{ text: "Bebidas" }} />,
+      <UI.BUTTON key={2} config={{ text: "Hamburguers" }} />,
+      <UI.BUTTON key={3} config={{ text: "Refeições" }} />,
+      <UI.BUTTON key={4} config={{ text: "Inativos" }} />,
+    ],
     list: [
-      {
-        _id: "0",
-        title: "Hamburguer de sirí",
-        img: { src: ASSETS.FOTO, alt: "Hamburguer" },
-        footer: "Aguardando...",
-        content: (
-          <div className="list-item-content">
-            <p>Delicioso Hamburguer de sirí.</p>
-            <p>
-              texto: <span></span>
-            </p>
-          </div>
-        ),
-      },
-      { _id: "1", title: "Teste de lista" },
-      { _id: "2", title: "Teste de lista" },
-      { _id: "3", title: "Teste de lista" },
-      { _id: "4", title: "Teste de lista" },
-      { _id: "5", title: "Teste de lista" },
-      { _id: "6", title: "Teste de lista" },
-      { _id: "7", title: "Teste de lista" },
-      { _id: "8", title: "Teste de lista" },
+      <TEMPLATES.MENU_ITEM
+        config={{
+          t: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
+      <TEMPLATES.MENU_ITEM
+        config={{
+          title: "",
+        }}
+      />,
     ],
   };
 
@@ -325,20 +413,20 @@ export default ({ history }) => {
               </p>,
               <p key={2}>
                 Avaliação: <span>4.5</span>
-              </p>
+              </p>,
             ],
           }}
         />,
-        <TEMPLATES.VIEW_FORM 
+        <TEMPLATES.VIEW_FORM
           key={1}
           config={{
-            children:[
+            children: [
               <UI.INPUT
                 key={0}
                 config={{
                   label: "Formas de pagamento",
                   type: "text",
-                  placeholder: "Dinheiro, Cartão"
+                  placeholder: "Dinheiro, Cartão",
                 }}
               />,
               <UI.INPUT
@@ -346,50 +434,48 @@ export default ({ history }) => {
                 config={{
                   label: "Taxa de Entrega",
                   type: "text",
-                  placeholder: "R$ 15,99"
+                  placeholder: "R$ 15,99",
                 }}
               />,
-            ]
+            ],
           }}
-        />
-      ]
+        />,
+      ],
     },
-    { 
-      _id: 4, 
-      style: { border: "none" }, 
+    {
+      _id: 4,
+      style: { border: "none" },
       children: [
         <TEMPLATES.VIEW_ITEM
           key={0}
           config={{
             title: "Desativar a conta",
             children: [
-              <p key={0}>
-                Desative sua conta para não aparecer nas buscas
-              </p>
+              <p key={0}>Desative sua conta para não aparecer nas buscas</p>,
             ],
           }}
         />,
         <TEMPLATES.VIEW_FORM
           key={1}
           config={{
-            buttonText:'Desativar',
-            buttonClassName: 'secondary-button'
+            buttonText: "Desativar",
+            buttonClassName: "secondary-button",
           }}
-        />
-      ]
-    }
+        />,
+      ],
+    },
   ];
 
   return (
     <TEMPLATES.PAGE
       config={{
         classNameHeader: "header-dashboard",
-        classsNameBody: "content-dashboard",
+        classNameBody: "content-dashboard",
         tools: tools,
         children: [
-          view === 0 ? <TEMPLATES.LIST key={0} config={listConfig} /> : "",
+          view === 0 ? <TEMPLATES.LIST key={0} config={listRequestsConfig} /> : '',
           view === 1 ? <h1>Vendas</h1> : "",
-          view === 2 ? <TEMPLATES.LIST key={2} config={listConfigMenu} /> : "",
+          view === 2 ? <TEMPLATES.LIST key={2} config={listMenuConfig} /> : "",
           view === 3 ? <TEMPLATES.VIEW key={3} config={perfilConfig} /> : "",
         ],
       }}

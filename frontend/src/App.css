@@ -52,6 +52,10 @@ a:hover{
   color: #e79614;
 }
 
+button{
+  user-select: none;
+}
+
 input{
   border-radius: 4px;
   height: 50px;

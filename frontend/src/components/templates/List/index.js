@@ -2,13 +2,16 @@ import React from 'react';
 
 import './styles.css';
 
-import { TEMPLATES } from '../../summary';
+//import { TEMPLATES } from '../../summary';
 
 export default props => {
   const {
     summary,
     summaryText,
-    list
+    list,
+    title,
+    tools,
+    oters
   } = props.config;
 
   return(
@@ -16,11 +19,29 @@ export default props => {
       <div className="summary" style={{display:summary }}>
         <p>{summaryText}</p>
       </div>
+      {
+        tools ? 
+          <div className="menu-list">
+            <h3>{title}</h3>
+            <div className="menu-list-tools">
+              <span>Filtre por </span>
+              {
+                tools
+              }
+              {
+                oters ?
+                  <div className="menu-list-oters">
+                    { oters }
+                  </div>
+                : ''
+              }
+            </div>
+          </div>
+        : ''
+      }
       <ul>
         {
-          list ? 
-            list.map(item => <TEMPLATES.LIST_ITEM key={ item._id } config={item} />)
-          : ''
+          list
         }
       </ul>
     </div>
