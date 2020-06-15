@@ -5,6 +5,7 @@ import {
   FiBookOpen,
   FiFileText,
   FiLogOut,
+  FiPlus
 } from "react-icons/fi";
 
 import "./styles.css";
@@ -160,6 +161,12 @@ export default ({ history }) => {
     summary: 'none',
     summaryText: ``,
     title: 'Cardápio',
+    oters: [
+      <UI.BUTTON key={0} config={{ 
+        className:'active-button',
+        text: <FiPlus size={24} /> 
+      }} />,
+    ],
     tools: [
       <UI.BUTTON key={0} config={{ text: "Todos", className:'active-button' }} />,
       <UI.BUTTON key={1} config={{ text: "Bebidas" }} />,

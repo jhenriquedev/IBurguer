@@ -23,11 +23,11 @@ export default props => {
         tools ? 
           <div className="menu-list">
             <h3>{title}</h3>
-            <div className="menu-list-tools">
-              <span>Filtre por </span>
-              {
-                tools
-              }
+            <div className="menu-list-content">
+              <div className="menu-list-tools">
+                <span>Filtre por </span>
+                { tools }
+              </div>
               {
                 oters ?
                   <div className="menu-list-oters">
