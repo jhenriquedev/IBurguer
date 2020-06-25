@@ -1,0 +1,43 @@
+.page{
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.header{
+  height: 15vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  padding-left: 40px;
+
+}
+
+.header-dashboard{
+  height: 10vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  padding-left: 40px;
+
+  border-bottom: 1px solid #d3d9d6;
+}
+
+.content{
+  height: 85vh;
+}
+
+.content-dashboard{
+  height: 90vh;
+}

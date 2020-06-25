@@ -1,42 +1,69 @@
 button{
-  height: 50px;
+  width: 100%;
 
-  border-radius: 4px;
-  margin-top: 20px;
-
-  border: none;
-  border: 1px solid #d3d9d6;
+  padding: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 
   cursor: pointer;
 
-  font-weight: bold;
-  color: #a1aaae;
-}
-
-button:hover{
-  background-color: #e79614;
-  color: #fff;
   border: none;
+  border-radius: 24px;
+  color: #fff;
+
+  font-size: 2.2em;
+  font-weight: normal;
+
+  margin: 5px;
 }
 
 .primary-button{
-  background-color: #e79614;
-  color: #fff;
-  border: none;
+  font-size: 2em;
+  font-weight: normal;
+
+  background: #e79614;
 }
 
-.primary-button:hover{
-  background-color: #945e07;
-  color: #fff;
+.primary-button, .primary-button-form:hover{
+  background: #d88808;
+}
+
+.primary-button-form{
+  width: 350px;
+  font-size: 2em;
+  font-weight: bolder;
+
+  background: #e79614;
 }
 
 .secondary-button{
-  background-color: #e8273b;
-  color: #fff;
-  border: none;
+  font-size: 2em;
+  font-weight: normal;
+
+  background: #e5e7e6;
+  color: #000;
 }
 
 .secondary-button:hover{
-  background-color: #be1f2f;
-  color: #fff;
+  background: #c9cccb;
+}
+
+.footer-button{
+  width: 100%;
+  height: 70px;
+
+  font-size: 2em;
+  font-weight: bolder;
+
+  background: transparent;
+  color: #000;
+
+  border-top: 1px solid #d3d9d6;
+  border-radius: 0;
+
+  position: relative;
+  bottom: -30px;
+
+  margin: 0;
+
 }

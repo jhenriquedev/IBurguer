@@ -6,7 +6,7 @@ import { ASSETS } from '../../summary';
 
 export default props => {
   return(
-    <div className="logo">
+    <div className="logo" {...props.config} >
       <img src={ ASSETS.LOGO_IMG } alt="IBurger App"/>
     </div>
   );

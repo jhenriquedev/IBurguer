@@ -2,26 +2,22 @@ import React from 'react';
 
 import './styles.css';
 
-import { UI } from '../../summary';
+import { UI, TEMPLATES } from '../../summary';
 
 
 export default props => {
   const {
+    modal,
     classNameHeader = 'header',
     classNameBody = 'content',
     tools,
-    children
+    content
   } = props.config;
 
   return(
     <div className="page">
-      <div className={ classNameHeader }>
-        <UI.LOGO />
-        {tools}
-      </div>
-      <div className={ classNameBody }>
-        { children }
-      </div>
+      <div className="modal" { ...modal }></div>
+      <div className="content" {...content}></div>
     </div>
   );
 };

@@ -56,34 +56,6 @@ button{
   user-select: none;
 }
 
-input{
-  border-radius: 4px;
-  height: 50px;
-  margin-top: 20px;
-
-  border: 1px solid #d3d9d6;
-
-  cursor: pointer;
-
-  font-weight: bold;
-  color: #414a4e;
-
-  padding-left: 25px;
-  padding-right: 20px;
-
-  font-weight: lighter;
-
-  caret-color: #e79614;
-}
-
-input::placeholder{
-  color: #a1aaae;
-}
-
-input:focus{
-  border: 1px solid #e79614;
-}
-
 .primmary{
   color:  #e79614;
 }
