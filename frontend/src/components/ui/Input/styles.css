@@ -1,92 +1,10 @@
-/*
 input{
-  border-radius: 4px;
-  height: 50px;
-  margin-top: 20px;
-
-  border: 1px solid #d3d9d6;
-
-  cursor: pointer;
-
-  font-weight: bold;
-  color: #414a4e;
-
-  padding-left: 25px;
-  padding-right: 20px;
-
-  font-weight: lighter;
-
-  caret-color: #e79614;
-}
-
-input::placeholder{
-  color: #a1aaae;
-}
-
-input:focus{
-  border: 1px solid #e79614;
-}
-
-
-.input-box{
-  width: 100%;
-
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  margin-bottom: 10px;
-
-  color: #a1aaae;
-}
-
-.input-box input{
-  width: 100%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.input-box span{
-  color: #e8273b;
-}
-
-.input-box label{
-  min-width: 40px;
-
-  background-color: #FBFBFD;
-
-  position: relative;
-  top: 15px;
-  left: 20px;
-
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.input-box input:focus{
-  color:  #e79614;
-}
-
-*/
-
-.input-box{
-  width: 350px;
-  height: 90px;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: center;
-}
-
-.input-box input{
   width: 100%;
   height: 60px;
 
   margin: 0;
 
-  border-radius: 16px;
+  border-radius: 32px;
   border: 1px solid #a1aaae;
 
   cursor: pointer;
@@ -100,10 +18,18 @@ input:focus{
 
   font-weight: bold;
   color: #414a4e;
+  
 }
 
-.input-box input:focus{
-  border: 2px solid #e79614;
+.input-box{
+  width: 350px;
+  height: 90px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
 }
 
 .input-box span{
@@ -114,4 +40,42 @@ input:focus{
   text-align: left;
 
   color: #e8273b;
+}
+
+.input-box-header{
+  width: 50%;
+  height: 60px;
+  
+  margin-right: 10px;
+}
+
+.input-box-header input{
+  width: 100%;
+  height: 60px;
+
+  background: rgba(196, 196, 196,.30);
+
+  border: none;
+
+  padding-left: 50px;
+
+  font-weight: normal;
+  color: #2e3538;
+
+  position: relative;
+  top: -28px;
+}
+
+.input-box-header input::placeholder{
+  color: #4b5558;
+}
+
+.input-box-header .input-icon{
+  position: relative;
+  left: 20px;
+  top: 15px;
+}
+
+input:focus{
+  border: 2px solid #e79614;
 }

@@ -9,7 +9,7 @@ export default ({history}) => {
     <TEMPLATES.PAGE config = {{
       modal: {
         style: {
-          display:'block'
+          display: 'block'
         },
         children: [
           <TEMPLATES.ROW key={0} config={{
@@ -113,70 +113,71 @@ export default ({history}) => {
               <TEMPLATES.PANEL key={0} config={{
                 style:{
                   height: '450px',
-                  backgroundImage: `url(${ASSETS.HAMBURGUER_4})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_1})`,
                   backgroundSize: 'cover' 
                 },
               }}/>,
               <TEMPLATES.PANEL key={1} config={{
                 style:{
                   height: '300px',
-                  backgroundImage: `url(${ASSETS.BATATA_FRITA})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_2})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
               <TEMPLATES.PANEL key={2} config={{
                 style:{
                   height: '350px',
-                  backgroundImage: `url(${ASSETS.CACHORRO_QUENTE})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_3})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
               <TEMPLATES.PANEL key={3} config={{
                 style:{
                   height: '400px',
-                  backgroundImage: `url(${ASSETS.CHUPCAKE})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_4})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
               <TEMPLATES.PANEL key={4} config={{
                 style:{
-                  height: '400px',
-                  backgroundImage: `url(${ASSETS.ARTESANAL})`,
+                  height: '300px',
+                  backgroundImage: `url(${ASSETS.BUSINES_8})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
               <TEMPLATES.PANEL key={5} config={{
                 style:{
                   height: '300px',
-                  backgroundImage: `url(${ASSETS.HAMBURGUERS})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_6})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
               <TEMPLATES.PANEL key={6} config={{
                 style:{
                   height: '450px',
-                  backgroundImage: `url(${ASSETS.COCA_COLA})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_7})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
+              
               <TEMPLATES.PANEL key={7} config={{
                 style:{
                   height: '400px',
-                  backgroundImage: `url(${ASSETS.HAMBURGUERS_2})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_5})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
               <TEMPLATES.PANEL key={8} config={{
                 style:{
                   height: '150px',
-                  backgroundImage: `url(${ASSETS.BURGUER_IMG})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_9})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,
               <TEMPLATES.PANEL key={9} config={{
                 style:{
                   height: '200px',
-                  backgroundImage: `url(${ASSETS.CHURRASCO})`,
+                  backgroundImage: `url(${ASSETS.BUSINES_1})`,
                   backgroundSize: 'cover' 
                 }
               }}/>,

@@ -12,8 +12,8 @@ export default props => {
   } = props.config;
 
   return(
-    <button className={className} >
-      {icon ? icon : ''}
+    <button className={className} {...style} onClick={onClick}>
+      {icon ? <i>{icon}</i> : ''}
       {text ? text : ''}
     </button>
   );

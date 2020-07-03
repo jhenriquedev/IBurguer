@@ -67,3 +67,108 @@ button{
   margin: 0;
 
 }
+
+.btn-header{
+  width: auto;
+  max-width: 300px;
+  height: 60px;
+
+  background: none;
+
+  font-size: 2em;
+  font-weight: normal;
+
+  border-radius: 60px;
+
+  padding-left: 16px;
+  padding-right: 16px;
+
+  color: #000;
+
+  margin: 0;
+  margin-right: 10px;
+}
+
+.btn-header-sm{
+  width: 32px;
+  height: 32px;
+
+  background: none;
+
+  border-radius: 50%;
+
+  color: #000;
+
+  margin: 0;
+
+  padding-top: 4px;
+  padding-left: 4px;
+  text-align: center;
+}
+
+.btn-header-active{
+  width: auto;
+  max-width: 300px;
+  height: 60px;
+
+  background: #000;
+
+  font-size: 2em;
+  font-weight: normal;
+
+  border-radius: 60px;
+
+  padding-left: 16px;
+  padding-right: 16px;
+
+  margin: 0;
+  margin-right: 10px;
+}
+
+.btn-logo{
+  width: 60px;
+  height: 56px;
+
+  background: none;
+
+  border-radius: 50%;
+
+  padding: 0;
+
+  margin: 0;
+  margin-right: 10px;
+}
+
+.btn-logo img{
+  width: 46px;
+}
+
+.btn-avatar{
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  margin-right: 10px;
+
+  background: none;
+
+  padding: 0;
+  padding-top: 5px;
+}
+
+
+.btn-header i img{
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  border: 2px solid #4b5558;
+
+  margin: 0;
+}
+
+.btn-header-sm:hover, 
+.btn-header:hover{
+  background: rgba(196, 196, 196,.30);
+}

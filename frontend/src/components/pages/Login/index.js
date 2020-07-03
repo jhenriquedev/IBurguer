@@ -27,7 +27,7 @@ export default ({history}) => {
                   height: '87%',
                   margin: 'auto auto'
                 },
-                onSubmit: '',
+                onSubmit: () => Navegar(history, '/dashboard'),
                 children: [
                   <UI.LOGO key={0} config={{
                     style:{
