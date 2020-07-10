@@ -31,6 +31,7 @@ import Panel from './templates/Panel';
 import List from './templates/List';
 import Links from './templates/Links';
 import Header from './templates/Header';
+import ProductPanel from './templates/ProductPanel';
 
 //importações Ui
 import Logo from './ui/Logo';
@@ -73,6 +74,7 @@ const TEMPLATES = {
   LIST: props => <List config={props.config} />,
   LINKS: props => <Links config={props.config} />,
   HEADER: props => <Header config={props.config} />,
+  PRODUCT: props => <ProductPanel config={props.config} />,
 };
 
 const UI = {

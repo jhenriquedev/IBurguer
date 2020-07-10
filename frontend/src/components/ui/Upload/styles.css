@@ -1,0 +1,98 @@
+/*
+.div-avatar{
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.div-avatar input{
+  display: none;
+}
+
+.input-avatar{
+  width: 64px;
+  height: 64px;
+
+  border-radius: 50%;
+}
+
+.input-avatar img{
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+*/
+
+.uploads {
+  width: 100%;
+  height: 100%;
+
+  border: 3px dashed rgba(196, 196, 196, 0.7);
+  border-radius: 8px;
+
+  display: block;
+}
+
+.uploads input {
+  display: none;
+}
+
+.uploads img {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 8px;
+
+  display: block;
+}
+
+.uploads span {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 8px;
+
+  display: block;
+
+  margin: 0;
+
+  text-align: center;
+
+  padding-top: 40%;
+}
+
+.uploads label {
+  position: relative;
+
+  display: block;
+
+  top: 0;
+
+  z-index: 100;
+
+  top: -50%;
+
+  text-align: center;
+}
+
+.uploads label a {
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+
+  font-size: 1em;
+
+  position: relative;
+
+  display: block;
+}
+
+.uploads label a:hover div span {
+  color: #e79614;
+}
