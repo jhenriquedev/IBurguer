@@ -3,14 +3,14 @@ import { Redirect } from 'react-router';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 //pages
-import Home from './components/pages/Home';
-import Login from './components/pages/Login';
-import Recover from './components/pages/Recover';
-import Register from './components/pages/Register';
-import Busines from './components/pages/Busines';
-import Dashboard from './components/pages/Dashboard';
-import Request from './components/pages/Request';
-import Menu from './components/pages/Menu';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Recover from './pages/Recover';
+import Register from './pages/Register';
+import Busines from './pages/Busines';
+import Dashboard from './pages/Dashboard';
+import Request from './pages/Request';
+import Menu from './pages/Menu';
 
 
 export default () => {
