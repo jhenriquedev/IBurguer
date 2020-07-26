@@ -11,6 +11,7 @@ import Busines from './pages/Busines';
 import Dashboard from './pages/Dashboard';
 import Request from './pages/Request';
 import Menu from './pages/Menu';
+import Promotions from './pages/Promotions';
 
 
 export default () => {
@@ -25,6 +26,7 @@ export default () => {
         <Route path='/dashboard' exact component={ Dashboard } />
         <Route path='/request' exact component={ Request } />
         <Route path='/menu' exact component={ Menu } />
+        <Route path='/promotions' exact component={ Promotions } />
 
         <Redirect from='/' to='/home' />
         <Redirect from='*' to='/home' />

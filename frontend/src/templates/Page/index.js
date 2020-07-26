@@ -2,8 +2,6 @@ import React from 'react';
 
 import './styles.css';
 
-import { UI, TEMPLATES } from '../../summary';
-
 
 export default props => {
   const {

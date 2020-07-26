@@ -11,6 +11,7 @@ export default props => {
     img = ASSETS.BATATA_FRITA,
     title = 'Titulo',
     price = '0.00', 
+    promotionalPrice,
     description,
     evaluation,
     preparation,
@@ -44,12 +45,36 @@ export default props => {
         <h3>{title}</h3>
         <p>
           {
+            promotionalPrice ?
+              <span style={{ color: 'green' }}>
+                {
+                  Intl.NumberFormat('pt-BR', {
+                    style: 'currency', 
+                    currency: 'BRL'
+                  }).format(promotionalPrice)
+                }  
+              </span>
+            : ''
+          }
+          <span style={{
+            textDecoration: promotionalPrice ? 'line-through' : 'none'
+          }}>
+          {
             Intl.NumberFormat('pt-BR', {
               style: 'currency', 
               currency: 'BRL'
             }).format(price)
           }
+          </span>
         </p>
+
+        <div className="product-description">
+          <p>
+            {
+              description
+            }
+          </p>
+        </div>
 
         <div className="status">
           <div className="evaluation">
@@ -67,9 +92,6 @@ export default props => {
             : ''
           }
         </div>
-      </div>
-      <div className="product-description">
-        
       </div>
     </div>
   );

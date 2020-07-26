@@ -33,6 +33,7 @@ export default props => {
         config={{
           className: page === 2 ? 'btn-header-active' : "btn-header",
           text: "Promoções",
+          onClick: () => Navegar(history, "/promotions"),
         }}
       />
       <UI.BUTTON
