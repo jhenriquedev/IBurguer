@@ -23,6 +23,7 @@ import Busines_6 from './assets/busines/6.jpeg';
 import Busines_7 from './assets/busines/7.jpeg';
 import Busines_8 from './assets/busines/8.jpeg';
 import Busines_9 from './assets/busines/9.jpeg';
+import User from './assets/user.jpeg';
 
 //importações de Templates
 import Page from './templates/Page';
@@ -32,6 +33,7 @@ import List from './templates/List';
 import Links from './templates/Links';
 import Header from './templates/Header';
 import ProductPanel from './templates/ProductPanel';
+import RequestPanel from './templates/RequestPanel';
 
 //importações Ui
 import Logo from './ui/Logo';
@@ -65,6 +67,7 @@ const ASSETS = {
   BUSINES_7: Busines_7,
   BUSINES_8: Busines_8,
   BUSINES_9: Busines_9,
+  USER: User
 };
 
 const TEMPLATES = {
@@ -75,6 +78,7 @@ const TEMPLATES = {
   LINKS: props => <Links config={props.config} />,
   HEADER: props => <Header config={props.config} />,
   PRODUCT: props => <ProductPanel config={props.config} />,
+  REQUEST: props => <RequestPanel config={props.config} />,
 };
 
 const UI = {

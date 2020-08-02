@@ -202,27 +202,6 @@ export default ({history}) => {
                 salesCount: 763,
                 preparation: 45
               }}/>,
-              <TEMPLATES.PANEL key={1} config={{
-                style:{
-                  height: '400px',
-
-                  border: '1px solid #000'
-                },
-              }}/>,
-              <TEMPLATES.PANEL key={2} config={{
-                style:{
-                  height: '400px',
-
-                  border: '1px solid #000'
-                },
-              }}/>,
-              <TEMPLATES.PANEL key={3} config={{
-                style:{
-                  height: '400px',
-
-                  border: '1px solid #000'
-                },
-              }}/>
               
             ]
           }} />

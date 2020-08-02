@@ -6,6 +6,9 @@ import { ASSETS, TEMPLATES, UI } from '../../summary';
 
 import { FiPlusCircle, FiXCircle } from 'react-icons/fi';
 
+//apenas para testes
+import { REQUEST } from './listRequests';
+
 export default ({history}) => {
   const [modalDisplay, setModalDisplay] = useState('none');
 
@@ -86,7 +89,7 @@ export default ({history}) => {
         children: [
           <TEMPLATES.HEADER key={0} config={{
             history: history,
-            page: 2
+            page: 1
           }} />
         ]
       },
@@ -100,8 +103,8 @@ export default ({history}) => {
               overflow: 'auto'
             },
             header: {
-              title: 'Crie promoções deliciosas!',
-              subTitle: 'Combine pratos e bebidas para formar combos e promoções incriveis!',
+              title: 'Verifique os pedidos',
+              subTitle: 'Atenda os pedidos rápidamente, seus clientes estão famintos!',
               tools: [
                 <UI.BUTTON key={0} config={{
                   className: "btn-header-active",
@@ -110,79 +113,73 @@ export default ({history}) => {
                 }} />,
                 <UI.BUTTON key={1} config={{
                   className: "btn-header",
-                  text: 'Hambúrgueres',
+                  text: 'Novos',
                   onClick: () => setModalDisplay('block')
                 }} />,
                 <UI.BUTTON key={2} config={{
                   className: "btn-header",
-                  text: 'Milk shakes',
+                  text: 'Preparando',
                   onClick: () => setModalDisplay('block')
                 }} />,
                 <UI.BUTTON key={3} config={{
                   className: "btn-header",
-                  text: 'Bebidas',
+                  text: 'Encaminhados',
                   onClick: () => setModalDisplay('block')
                 }} />,
                 <UI.BUTTON key={4} config={{
                   className: "btn-header",
-                  text: 'Combos',
+                  text: 'Entregues',
                   onClick: () => setModalDisplay('block')
                 }} />,
                 <UI.BUTTON key={5} config={{
                   className: "btn-header",
-                  icon: <FiPlusCircle size={24} color="#4b5558" />,
+                  text: 'Cancelados',
                   onClick: () => setModalDisplay('block')
-                }} />,
+                }} />
               ]
             },
-            children: [
-              <TEMPLATES.PRODUCT key={0} config={{
-                img: ASSETS.BATATA_FRITA,
-                title: 'Batata Frita',
-                price: 25.90,
-                promotionalPrice: 15.90,
-                evaluation : 4.5,
-                salesCount: 250,
-                preparation: 25,
-                description: 'Deliciosa batata frita, bem sequinha feita com ervas naturais e expeciarias do nordeste.'
-              }}/>,
-              <TEMPLATES.PRODUCT key={20} config={{
-                img: ASSETS.CACHORRO_QUENTE,
-                title: 'Cachorro Quente',
-                price: 5.99,
-                evaluation : 2.5,
-                salesCount: 870,
-                preparation: 30
-              }}/>,
-              <TEMPLATES.PRODUCT key={0} config={{
-                img: ASSETS.ARTESANAL,
-                title: 'Burguer artesanal de Picanha',
-                price: 25.90,
-                evaluation : 4.5,
-                salesCount: 250,
-                preparation: 25
-              }}/>,
-              <TEMPLATES.PRODUCT key={0} config={{
-                img: ASSETS.CHUPCAKE,
-                title: 'Cupcake',
-                price: 25.90,
-                evaluation : 4.5,
-                salesCount: 250,
-                preparation: 25
-              }}/>,
-              <TEMPLATES.PRODUCT key={0} config={{
-                img: ASSETS.CHURRASCO,
-                title: 'Churrasco suculento de cupim',
-                price: 60.50,
-                evaluation : 5,
-                salesCount: 763,
-                preparation: 45
-              }}/>,
-              
-            ]
+            children: REQUEST
           }} />
         ]
       }
     }} />
   );
 };
+
+/**
+
+<TEMPLATES.REQUEST key={0} config={{
+                client: {
+                  name: 'Miranda Ribeiro',
+                  thumbnail: ASSETS.USER,
+                  cep: '66833011',
+                  publicPlace: 'Rod. Mário Covas, Pass Santa Maria', //logradouro
+                  complement: 'Residêncial Ilha Bela, Bl 15, apt 203', //complemento
+                  neighborhood: 'Coqueiro', //bairro
+                  city: 'Ananindeua', //cidade
+                  uf: 'PA', //estado
+                  number: '135', //numero
+                },
+                basket: [
+                  {
+                    _id: 0,
+                    img: ASSETS.ARTESANAL,
+                    name: 'Hamburguer Artesanal',
+                    description: 'Ao ponto, sem molho e sem cebola.',
+                    price: 32.99
+                  },
+                  {
+                    _id: 1,
+                    img: ASSETS.BATATA_FRITA,
+                    name: 'Batata Frita crocante',
+                    description: 'Bem sequinha.',
+                    price: 12.36
+                  }
+                ],
+                paymentMethod: 'Dinheiro',
+                total: 102,
+                status: 0,
+                note: 'Ao chegar na portaria, por favor pedir para liberação da entrada no residêncial.'
+              }} />,
+
+ */

@@ -1,0 +1,191 @@
+.request-panel{
+  width: 300px;
+
+  border-radius: 8px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  cursor: pointer;
+
+}
+
+.request-panel:hover{
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+}
+
+.request-panel-div{
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-bottom: 1px solid rgb(245, 243, 243);
+}
+
+.request-status{
+  width: 10px;
+  height: 70px;
+
+  margin: 15px 0;
+
+  background: red;
+}
+
+.request-client{
+  width: 280px;
+  height: 70px;
+
+  padding-left: 20px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.request-client img{
+  width: 46px;
+  height: 46px;
+
+  border-radius: 8px;
+}
+
+.request-client h4{
+  width: 55%;
+
+  margin-left: 10px;
+
+  color: #323738;
+}
+
+.request-client button{
+  width: 46px;
+  height: 46px;
+
+  margin-left: 10px;
+
+  background: none;
+}
+
+.basket-total,
+.request-info,
+.basket-item{
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.basket-item img{
+  width: 36px;
+  height: 36px;
+
+  border-radius: 8px;
+
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.basket-item div{
+  width: 60%;
+}
+
+.request-info h5,
+.basket-item h5{
+  font-size: 1.6em;
+  line-height: 2em;
+  color: #323738;
+}
+
+.request-info p,
+.basket-item div p{
+  font-size: 1.4em;
+  line-height: 1.5em;
+  color: #a1aaae;
+}
+
+.basket-item span{
+  width: 20%;
+
+  font-weight: bold;
+  font-size: 1.2em;
+
+  color: green;
+}
+
+.request-info div{
+  width: 75%;
+}
+
+.request-info span{
+  width: 25%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  padding-left: 5px;
+
+  font-weight: bold;
+  color: #a1aaae;
+}
+
+.request-payment-info{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.request-payment-info span{
+  margin-left: 10px;
+  color: #a1aaae;
+  font-weight: bold;
+  line-height: 1.5em;
+}
+
+.basket-total{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.basket-total h5{
+  width: 68%;
+
+  color: rgb(0, 153, 255);
+
+  margin-left: 10px;
+  margin-right: 10px;
+
+
+}
+
+.basket-total span{
+  font-weight: bold;
+  color: green;
+}
+
+.basket-observations{
+  width: 100%;
+  min-height: 25px;
+
+  background: green;
+
+  border-radius: 0 0 8px 8px;
+}
+
+.basket-observations .request-payment-info span{
+  color: #fff;
+}

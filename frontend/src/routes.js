@@ -9,7 +9,7 @@ import Recover from './pages/Recover';
 import Register from './pages/Register';
 import Busines from './pages/Busines';
 import Dashboard from './pages/Dashboard';
-import Request from './pages/Request';
+import Requests from './pages/Requests';
 import Menu from './pages/Menu';
 import Promotions from './pages/Promotions';
 
@@ -24,7 +24,7 @@ export default () => {
         <Route path='/register' exact component={ Register } />
         <Route path='/busines' exact component={ Busines } />
         <Route path='/dashboard' exact component={ Dashboard } />
-        <Route path='/request' exact component={ Request } />
+        <Route path='/requests' exact component={ Requests } />
         <Route path='/menu' exact component={ Menu } />
         <Route path='/promotions' exact component={ Promotions } />
 
