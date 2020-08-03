@@ -6,10 +6,32 @@ const Obj = require('./Model'); //importação do modelo de dados
 //webtoken
 const createToken = _id => {
   //recebe o id do usuário, a password da aplicação e expira em 7d
-  return jwt.sign({ _id }, 'IburguerApi2020', { expiresIn: '7d' })
+  return jwt.sign({ _id }, 'IburguerApi2020', { expiresIn: '7d' });
 }
 
 module.exports = {
+  async auth(req, res) {
+    const { email, password } = req.body;
+    if (!email || !password) return res.json({ error: 'Email ou Senha não informados!' });
+
+    try {
+        const obj = await Obj.findOne({ email }).select('+password').populate('thumbnail');
+        if (!obj) return res.json({ error: 'Usuário não encontrado!' });
+
+        const password_ok = await bcrypt.compare(password, obj.password);
+        if (!password_ok) return res.json({ error: 'Usuário ou senha não conferem!' });
+
+        
+        obj.password = undefined;
+        obj.autenticado = true;
+        obj.token = createToken(obj._id);
+        obj.msg = 'Seja bem vindo ao IBurger';
+        return res.json(obj); //usuário autenticado
+
+    } catch (error) {
+        return res.json({ error: `Ocorreu um erro ao tentar efetuar o login! ${error}` })
+    };
+  },
   async store(req, res){ //adiciona novos users
     const body = req.body;
     const data = { //filtrando os dados que podem ser inseridos
@@ -31,12 +53,14 @@ module.exports = {
       obj.password = undefined; //oculta a password
       obj.autenticado = true;
       obj.token = createToken(obj._id);
-      console.log(obj);
+      obj.msg = 'Seja bem vindo ao IBurger';
+
+      //console.log(obj);
 
       return res.json(obj);
 
     }catch(error){
-      console.log(error);
+      //console.log(error);
 
       return res.json({ error: `Putz, parece que ocorreu um erro ao cadastrar: ${error}.` });
     }

@@ -7,6 +7,7 @@ import './styles.css';
 import { ASSETS, TEMPLATES, UI } from '../../summary';
 
 export default ({history}) => {
+  
   return(
     <TEMPLATES.PAGE config = {{
       modal: {

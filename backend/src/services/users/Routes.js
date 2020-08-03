@@ -3,28 +3,30 @@ const multer = require('multer');
 
 const Routes = express.Router();
 
+const auth = require('../../middlewares/auth');
 const Controller = require('./Controller');
 
 const Uploads = require('../../middlewares/uploads');
 const upload = multer(Uploads);
 
-Routes.get('/', (req, res) => {
+Routes.get('/', auth, (req, res) => {
   return res.json({
       message: 'Você está em /users',
-      //localsData: res.locals.auth_data
-  })
+      localsData: res.locals.auth_data
+  });
 });
 
+Routes.post('/login', Controller.auth); //autenticacao
 
-Routes.post('/store', Controller.store);
+Routes.post('/store', auth, Controller.store);
 
-Routes.put('/update', upload.single('thumbnail'), Controller.update);
+Routes.put('/update', auth, upload.single('thumbnail'), Controller.update);
 
-Routes.delete('/delete', Controller.delete);
+Routes.delete('/delete', auth, Controller.delete);
 
-Routes.get('/index', Controller.index); //lista todos
+Routes.get('/index', auth, Controller.index); //lista todos
 
-Routes.get('/find-one', Controller.show); //busca 1 por id
+Routes.get('/find-one', auth, Controller.show); //busca 1 por id
 
 module.exports = Routes;
 

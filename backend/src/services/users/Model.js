@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
     default: ''
   },
 
+  msg: {
+    type: String,
+    default: ''
+  },
+
   //informações pessoais
   thumbnail: { //id da foto de perfil
     type: mongoose.Schema.Types.ObjectId,

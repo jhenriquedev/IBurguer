@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './styles.css';
 
-import { Navegar } from '../../util';
+import { Navegar, API } from '../../util';
 
 import { ASSETS, TEMPLATES, UI } from '../../summary';
 
 //btn-link-info-down
 
 export default ({history}) => {
+  const [form, setForm] = useState({});
+
+  const handleLogin = async event => {
+    event.preventDefault();
+
+    try{
+      const resp = await API.post('/users/login', form);
+
+      alert(resp.data.error || resp.data.msg);
+      if(resp.data.msg){
+
+        //cria uma sessão
+        localStorage.setItem('user', JSON.stringify(resp.data));
+
+        Navegar(history, '/dashboard'); //redireciona para a tela inicial
+      }
+
+    }catch(error){
+      alert(`Erro no cadastro. Tente novamente...`);
+    };
+  };
+
   return(
     <TEMPLATES.PAGE config = {{
       modal: {
@@ -27,7 +49,7 @@ export default ({history}) => {
                   height: '87%',
                   margin: 'auto auto'
                 },
-                onSubmit: () => Navegar(history, '/dashboard'),
+                onSubmit: handleLogin,
                 children: [
                   <UI.LOGO key={0} config={{
                     style:{
@@ -42,12 +64,25 @@ export default ({history}) => {
 
                   <UI.INPUT key={4} config={{
                     Placeholder: 'E-mail',
-                    info: ''
+                    info: '',
+                    type: 'email',
+                    maxLength: '50', 
+                    minLength: '7', 
+                    required: true,
+                    autoFocus: true,
+                    value: form.email, 
+                    onChange: event => setForm({...form, email: event.target.value })
                   }}/>,
 
                   <UI.INPUT key={5} config={{
                     Placeholder: 'Senha',
-                    info: ''
+                    info: '',
+                    type: 'password',
+                    maxLength: '16', 
+                    minLength: '6',
+                    required: true,
+                    value: form.password, 
+                    onChange: event => setForm({...form, password: event.target.value })
                   }}/>,
 
                   <UI.LINK key={10} config={{

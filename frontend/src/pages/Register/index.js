@@ -1,10 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
+//import { useHistory } from 'react-router-dom';
 
 import './styles.css';
 
 import { ASSETS, TEMPLATES, UI } from '../../summary';
 
+import { Navegar, API } from '../../util';
+
 export default ({history}) => {
+  const [form, setForm] = useState({});
+
+  //const history = useHistory(); //permite efetuar a navegação sem necessidade do link
+
+  const handleRegister = async event => {
+    event.preventDefault();
+
+    try{
+      const resp = await API.post('/users/store', form);
+
+      //console.log(resp.data.error);
+
+      //alert('Cadastrado com sucesso!');
+      alert(resp.data.error || resp.data.msg);
+      if(resp.data.msg){
+
+        //cria uma sessão
+        localStorage.setItem('user', JSON.stringify(resp.data));
+
+        Navegar(history, '/dashboard'); //redireciona para a tela inicial
+      }
+
+    }catch(error){
+      alert(`Erro no cadastro. Tente novamente...`);
+    };
+
+  };
+
   return(
     <TEMPLATES.PAGE config = {{
       modal: {
@@ -23,7 +54,7 @@ export default ({history}) => {
                   height: '90%',
                   margin: 'auto auto'
                 },
-                onSubmit: '',
+                onSubmit: handleRegister,
                 children: [
                   <UI.LOGO key={0} config={{
                     style:{
@@ -38,12 +69,25 @@ export default ({history}) => {
 
                   <UI.INPUT key={4} config={{
                     Placeholder: 'E-mail',
-                    info: ''
+                    info: '',
+                    type: 'email',
+                    maxLength: '50', 
+                    minLength: '7', 
+                    required: true,
+                    autoFocus: true,
+                    value: form.email, 
+                    onChange: event => setForm({...form, email: event.target.value })
                   }}/>,
 
                   <UI.INPUT key={5} config={{
                     Placeholder: 'Crie uma boa senha',
-                    info: ''
+                    info: '',
+                    type: 'password',
+                    maxLength: '16', 
+                    minLength: '6',
+                    required: true,
+                    value: form.password, 
+                    onChange: event => setForm({...form, password: event.target.value })
                   }}/>,
 
                   <UI.BUTTON key={6} config={{
