@@ -129,7 +129,7 @@ const REQUEST = [
     ],
     paymentMethod: 'Dinheiro',
     total: 102,
-    status: 2,
+    status: 3,
     note: 'Ao chegar na portaria, por favor pedir para liberação da entrada no residêncial.'
   }} />,
 
@@ -156,7 +156,7 @@ const REQUEST = [
     ],
     paymentMethod: 'Dinheiro',
     total: 102,
-    status: 2,
+    status: 4,
     note: 'Ao chegar na portaria, por favor pedir para liberação da entrada no residêncial.'
   }} />,
 

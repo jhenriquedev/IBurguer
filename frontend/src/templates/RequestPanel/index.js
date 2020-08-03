@@ -2,8 +2,6 @@ import React from 'react';
 
 import './styles.css';
 
-import { ASSETS } from '../../summary';
-
 import { FiInfo, FiClock, FiCreditCard } from 'react-icons/fi';
 
 import { FormataCurrency } from '../../util';
@@ -29,8 +27,6 @@ export default props => {
     let sum = basket.reduce((tot, item) => {
       return tot + item.price;
     }, 0);
-
-    console.log('total: '+sum);
 
     return FormataCurrency(sum);
   };
@@ -76,7 +72,7 @@ export default props => {
       <div className="request-panel-div">
         <div className="request-payment-info">
           <span>
-            {client.cep}<br />
+            <b>{client.cep}</b><br />
             { client.publicPlace } <br />
             { client.complement } <br />
             {`

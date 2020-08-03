@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import './styles.css';
 
-import { ASSETS, TEMPLATES, UI } from '../../summary';
+import { TEMPLATES, UI } from '../../summary';
 
-import { FiPlusCircle, FiXCircle } from 'react-icons/fi';
+import { FiXCircle } from 'react-icons/fi';
 
 //apenas para testes
 import { REQUEST } from './listRequests';
