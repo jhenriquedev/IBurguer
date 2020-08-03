@@ -9,7 +9,12 @@ import { Navegar } from '../../util';
 import { FiSearch, FiBell, FiMessageCircle, FiUser, FiChevronDown } from 'react-icons/fi';
 
 export default props => {
-  const { history, page=1 } = props.config;
+  const { 
+    history, 
+    page=1,
+    search 
+  } = props.config;
+
   return (
     <>
       <UI.BUTTON
@@ -48,8 +53,10 @@ export default props => {
         key={4}
         config={{
           className: "input-box-header",
-          placeholder: "Pesquisar",
+          placeholder: search ? search.placeholder : "Pesquisar",
           icon: <FiSearch size={24} color="#4b5558" />,
+          onChange: search ? search.onChange : '',
+          value: search ? search.value : ''
         }}
       />
       <UI.BUTTON

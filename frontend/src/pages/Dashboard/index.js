@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './styles.css';
 
-import { FiSearch, FiBell, FiMessageCircle, FiUser, FiChevronDown } from 'react-icons/fi';
+import { FiPlusCircle } from 'react-icons/fi';
 
-import { Navegar } from '../../util';
+//import { Navegar } from '../../util';
 
-import { ASSETS, TEMPLATES, UI, CONFIG } from '../../summary';
+import { ASSETS, TEMPLATES, UI } from '../../summary';
 
 export default ({history}) => {
+  const [modalDisplay, setModalDisplay] = useState('none');
 
   return(
     <TEMPLATES.PAGE config = {{
@@ -53,7 +54,10 @@ export default ({history}) => {
         children: [
           <TEMPLATES.HEADER key={0} config={{
             history: history,
-            page: 0
+            page: 0,
+            search: {
+              placeholder: 'Pesquise por burguerias ou items'
+            }
           }} />
         ]
       },
@@ -66,77 +70,86 @@ export default ({history}) => {
             style: {
               overflow: 'auto'
             },
+            header: {
+              title: 'Encontre pratos incriveis!',
+              subTitle: 'Burguerias incriveis com pratos sensacionais estão esperando para matar a sua fome.',
+              tools: [
+                <UI.BUTTON key={0} config={{
+                  className: "btn-header-active",
+                  text: 'Todos',
+                  onClick: () => setModalDisplay('block')
+                }} />,
+                <UI.BUTTON key={1} config={{
+                  className: "btn-header",
+                  text: 'Burguerias',
+                  onClick: () => setModalDisplay('block')
+                }} />,
+                <UI.BUTTON key={2} config={{
+                  className: "btn-header",
+                  text: 'Combos',
+                  onClick: () => setModalDisplay('block')
+                }} />,
+                <UI.BUTTON key={3} config={{
+                  className: "btn-header",
+                  text: 'Hambúrgueres',
+                  onClick: () => setModalDisplay('block')
+                }} />,
+                <UI.BUTTON key={4} config={{
+                  className: "btn-header",
+                  text: 'Milk shakes',
+                  onClick: () => setModalDisplay('block')
+                }} />,
+                <UI.BUTTON key={5} config={{
+                  className: "btn-header",
+                  text: 'Bebidas',
+                  onClick: () => setModalDisplay('block')
+                }} />,
+              ]
+            },
             children: [
-              <TEMPLATES.PANEL key={1} config={{
-                style:{
-                  height: '450px',
-                  backgroundImage: `url(${ASSETS.HAMBURGUER_4})`,
-                  backgroundSize: 'cover' 
-                },
+              <TEMPLATES.PRODUCT key={0} config={{
+                img: ASSETS.BATATA_FRITA,
+                title: 'Batata Frita',
+                price: 25.90,
+                promotionalPrice: 15.90,
+                evaluation : 4.5,
+                salesCount: 250,
+                preparation: 25,
+                description: 'Deliciosa batata frita, bem sequinha feita com ervas naturais e expeciarias do nordeste.'
               }}/>,
-              <TEMPLATES.PANEL key={2} config={{
-                style:{
-                  height: '300px',
-                  backgroundImage: `url(${ASSETS.BATATA_FRITA})`,
-                  backgroundSize: 'cover' 
-                }
+              <TEMPLATES.PRODUCT key={20} config={{
+                img: ASSETS.CACHORRO_QUENTE,
+                title: 'Cachorro Quente',
+                price: 5.99,
+                evaluation : 2.5,
+                salesCount: 870,
+                preparation: 30
               }}/>,
-              <TEMPLATES.PANEL key={3} config={{
-                style:{
-                  height: '350px',
-                  backgroundImage: `url(${ASSETS.CACHORRO_QUENTE})`,
-                  backgroundSize: 'cover' 
-                }
+              <TEMPLATES.PRODUCT key={0} config={{
+                img: ASSETS.ARTESANAL,
+                title: 'Burguer artesanal de Picanha',
+                price: 25.90,
+                evaluation : 4.5,
+                salesCount: 250,
+                preparation: 25
               }}/>,
-              <TEMPLATES.PANEL key={4} config={{
-                style:{
-                  height: '400px',
-                  backgroundImage: `url(${ASSETS.CHUPCAKE})`,
-                  backgroundSize: 'cover' 
-                }
+              <TEMPLATES.PRODUCT key={0} config={{
+                img: ASSETS.CHUPCAKE,
+                title: 'Cupcake',
+                price: 25.90,
+                evaluation : 4.5,
+                salesCount: 250,
+                preparation: 25
               }}/>,
-              <TEMPLATES.PANEL key={5} config={{
-                style:{
-                  height: '400px',
-                  backgroundImage: `url(${ASSETS.ARTESANAL})`,
-                  backgroundSize: 'cover' 
-                }
+              <TEMPLATES.PRODUCT key={0} config={{
+                img: ASSETS.CHURRASCO,
+                title: 'Churrasco suculento de cupim',
+                price: 60.50,
+                evaluation : 5,
+                salesCount: 763,
+                preparation: 45
               }}/>,
-              <TEMPLATES.PANEL key={6} config={{
-                style:{
-                  height: '300px',
-                  backgroundImage: `url(${ASSETS.HAMBURGUERS})`,
-                  backgroundSize: 'cover' 
-                }
-              }}/>,
-              <TEMPLATES.PANEL key={7} config={{
-                style:{
-                  height: '450px',
-                  backgroundImage: `url(${ASSETS.COCA_COLA})`,
-                  backgroundSize: 'cover' 
-                }
-              }}/>,
-              <TEMPLATES.PANEL key={8} config={{
-                style:{
-                  height: '400px',
-                  backgroundImage: `url(${ASSETS.HAMBURGUERS_2})`,
-                  backgroundSize: 'cover' 
-                }
-              }}/>,
-              <TEMPLATES.PANEL key={9} config={{
-                style:{
-                  height: '300px',
-                  backgroundImage: `url(${ASSETS.BURGUER_IMG})`,
-                  backgroundSize: 'cover' 
-                }
-              }}/>,
-              <TEMPLATES.PANEL key={10} config={{
-                style:{
-                  height: '200px',
-                  backgroundImage: `url(${ASSETS.CHURRASCO})`,
-                  backgroundSize: 'cover'
-                }
-              }}/>,
+              
             ]
           }} />
         ]
