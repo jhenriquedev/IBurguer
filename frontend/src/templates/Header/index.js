@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./styles.css";
 
@@ -6,7 +6,14 @@ import { UI, ASSETS, CONFIG } from "../../summary";
 
 import { Navegar } from '../../util';
 
-import { FiSearch, FiBell, FiMessageCircle, FiUser, FiChevronDown } from 'react-icons/fi';
+import { 
+  FiSearch, 
+  FiBell, 
+  FiMessageCircle, 
+  FiUser, 
+  FiChevronDown,
+  FiX 
+} from 'react-icons/fi';
 
 export default props => {
   const { 
@@ -14,6 +21,12 @@ export default props => {
     page=1,
     search 
   } = props.config;
+
+  const [menu, setMenu] = useState({
+    display: 'none',
+    right: '0px'
+  });
+
 
   return (
     <>
@@ -64,6 +77,12 @@ export default props => {
         config={{
           className: "btn-header",
           icon: <FiBell size={24} color="#4b5558" />,
+
+          onClick: () => setMenu({
+            ...menu, 
+            display: menu.display === 'none' ? 'flex' : '',
+            right: '200px'
+          })
         }}
       />
       <UI.BUTTON
@@ -71,17 +90,29 @@ export default props => {
         config={{
           className: "btn-header",
           icon: <FiMessageCircle size={24} color="#4b5558" />,
+
+          onClick: () => setMenu({
+            ...menu, 
+            display: menu.display === 'none' ? 'flex' : '',
+            right: '136px'
+          })
         }}
       />
       <UI.BUTTON
         key={7}
         config={{
           className: "btn-header",
-          icon: CONFIG.USER_AVATAR ? (
+          icon: CONFIG.USER_AVATAR ? 
             CONFIG.USER_AVATAR
-          ) : (
+          : 
             <FiUser size={24} color="#4b5558" />
-          ),
+          ,
+
+          onClick: () => setMenu({
+            ...menu, 
+            display: menu.display === 'none' ? 'flex' : '',
+            right: '68px'
+          })
         }}
       />
       <UI.BUTTON
@@ -89,8 +120,40 @@ export default props => {
         config={{
           className: "btn-header-sm",
           icon: <FiChevronDown size={24} color="#4b5558" />,
+          onClick: () => setMenu({
+            ...menu, 
+            display: menu.display === 'none' ? 'flex' : '',
+            right: '15px'
+          })
         }}
       />
+
+
+      <div className="menu-app" style={{
+        display: menu.display
+      }}>
+        <div className="menu-aba" style={{
+          right: menu.right
+        }}></div>
+        
+        <div className="menu-app-header">
+          <UI.BUTTON
+            config={{
+            className: "btn-header-sm",
+            icon: <FiX size={24} color="#4b5558" />,
+            onClick: () => setMenu({
+              ...menu, 
+              display: 'none',
+            })
+          }}
+          />
+        </div>
+
+        <div className="menu-app-content">
+
+        </div>
+      </div>
+      
     </>
   );
 };

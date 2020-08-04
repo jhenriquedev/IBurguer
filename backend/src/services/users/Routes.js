@@ -18,7 +18,7 @@ Routes.get('/', auth, (req, res) => {
 
 Routes.post('/login', Controller.auth); //autenticacao
 
-Routes.post('/store', auth, Controller.store);
+Routes.post('/store', Controller.store); //não precisa ter auth
 
 Routes.put('/update', auth, upload.single('thumbnail'), Controller.update);
 
