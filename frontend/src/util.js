@@ -11,6 +11,13 @@ const FormataCurrency = valor => {
   return valor.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
 };
 
+//sair do aplicativo
+const Logout = (history) => {
+  localStorage.removeItem('user'); //remove sessão
+  //navega para a tela inicial
+  Navegar(history, '/');
+};
+
 
 //conexão com a api
 //baseURL => parte padrão do caminho para a api
@@ -23,6 +30,7 @@ const API = axios.create({
 export{
   Navegar,
   FormataCurrency,
+  Logout,
 
   API
 }

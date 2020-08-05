@@ -4,7 +4,7 @@ import "./styles.css";
 
 import { UI, ASSETS, CONFIG } from "../../summary";
 
-import { Navegar } from '../../util';
+import { Navegar, Logout } from '../../util';
 
 import { 
   FiSearch, 
@@ -24,8 +24,20 @@ export default props => {
 
   const [menu, setMenu] = useState({
     display: 'none',
-    right: '0px'
+    right: '0px',
+    idMenu: 0
   });
+
+  const menus = [
+    <>
+      <h6>Mais opções</h6>
+      <UI.BUTTON config={{
+        className: 'secondary-button',
+        text: 'Sair',
+        onClick: () => Logout(history)
+      }}/>
+    </>,
+  ];
 
 
   return (
@@ -144,13 +156,16 @@ export default props => {
             onClick: () => setMenu({
               ...menu, 
               display: 'none',
+              idMenu: 0
             })
           }}
           />
         </div>
 
         <div className="menu-app-content">
-
+          {
+            menus[menu.idMenu]
+          }
         </div>
       </div>
       
