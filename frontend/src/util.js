@@ -11,12 +11,27 @@ const FormataCurrency = valor => {
   return valor.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
 };
 
+
+//login
+const Login = (history, data) => {
+  //cria uma sessão
+  localStorage.setItem('user', JSON.stringify(data));
+
+  return Navegar(history, '/dashboard');
+};
+
 //sair do aplicativo
 const Logout = (history) => {
   localStorage.removeItem('user'); //remove sessão
   //navega para a tela inicial
-  Navegar(history, '/');
+  return Navegar(history, '/');
 };
+
+//recuperar sessão
+const getSession = () => {
+  return JSON.parse(localStorage.getItem('user')); //recupera sessão
+};
+
 
 
 //conexão com a api
@@ -30,7 +45,10 @@ const API = axios.create({
 export{
   Navegar,
   FormataCurrency,
+
+  Login,
   Logout,
+  getSession,
 
   API
 }

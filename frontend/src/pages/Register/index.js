@@ -5,7 +5,7 @@ import './styles.css';
 
 import { ASSETS, TEMPLATES, UI } from '../../summary';
 
-import { Navegar, API } from '../../util';
+import { Navegar, API, Login } from '../../util';
 
 export default ({history}) => {
   const [form, setForm] = useState({});
@@ -24,10 +24,12 @@ export default ({history}) => {
       alert(resp.data.error || resp.data.msg);
       if(resp.data.msg){
 
-        //cria uma sessão
-        localStorage.setItem('user', JSON.stringify(resp.data));
+        Login(history, resp.data);
 
-        Navegar(history, '/dashboard'); //redireciona para a tela inicial
+        //cria uma sessão
+        //localStorage.setItem('user', JSON.stringify(resp.data));
+
+        //Navegar(history, '/dashboard'); //redireciona para a tela inicial
       }
 
     }catch(error){

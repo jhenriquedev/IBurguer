@@ -2,6 +2,8 @@ import React from 'react';
 
 import './styles.css';
 
+import { TEMPLATES } from '../../summary';
+
 
 export default props => {
   const {
@@ -14,7 +16,7 @@ export default props => {
     <div className="page" >
       <div className="content" { ...content }></div>
       <div className="header" { ...header }></div>
-      <div className="modal" { ...modal }></div>
+      <TEMPLATES.MODAL config={modal} />
     </div>
   );
 };

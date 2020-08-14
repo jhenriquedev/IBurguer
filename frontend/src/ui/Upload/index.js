@@ -10,11 +10,13 @@ export default props => {
   const {
     img,
     onChange,
-    alt= 'Nenhum arquivo selecionado'
+    alt = 'Nenhum arquivo selecionado',
+    legend = 'Escolha uma foto suculenta',
+    className = 'uploads'
   } = props.config;
 
   return(
-    <div className="uploads" onChange={onChange} {...props.config} >
+    <div className={className} onChange={onChange} {...props.config} >
       {
         img ?
           <img src={img} alt={alt} />
@@ -26,7 +28,7 @@ export default props => {
       
       <input type='file' name='upload' id='upload' accept='.jpg,.png,.jpeg' />
       <label htmlFor='upload' >
-        <a>Escolha uma foto suculenta</a>
+      <a>{legend}</a>
       </label>
     </div>
   );

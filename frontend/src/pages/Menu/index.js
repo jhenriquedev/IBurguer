@@ -170,7 +170,7 @@ export default ({history}) => {
                 salesCount: 250,
                 preparation: 25
               }}/>,
-              <TEMPLATES.PRODUCT key={20} config={{
+              <TEMPLATES.PRODUCT key={1} config={{
                 img: ASSETS.CACHORRO_QUENTE,
                 title: 'Cachorro Quente',
                 price: 5.99,
@@ -178,7 +178,7 @@ export default ({history}) => {
                 salesCount: 870,
                 preparation: 30
               }}/>,
-              <TEMPLATES.PRODUCT key={0} config={{
+              <TEMPLATES.PRODUCT key={2} config={{
                 img: ASSETS.ARTESANAL,
                 title: 'Burguer artesanal de Picanha',
                 price: 25.90,
@@ -186,7 +186,7 @@ export default ({history}) => {
                 salesCount: 250,
                 preparation: 25
               }}/>,
-              <TEMPLATES.PRODUCT key={0} config={{
+              <TEMPLATES.PRODUCT key={3} config={{
                 img: ASSETS.CHUPCAKE,
                 title: 'Cupcake',
                 price: 25.90,
@@ -194,7 +194,7 @@ export default ({history}) => {
                 salesCount: 250,
                 preparation: 25
               }}/>,
-              <TEMPLATES.PRODUCT key={0} config={{
+              <TEMPLATES.PRODUCT key={4} config={{
                 img: ASSETS.CHURRASCO,
                 title: 'Churrasco suculento de cupim',
                 price: 60.50,

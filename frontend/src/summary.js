@@ -34,6 +34,7 @@ import Links from './templates/Links';
 import Header from './templates/Header';
 import ProductPanel from './templates/ProductPanel';
 import RequestPanel from './templates/RequestPanel';
+import Modal from './templates/Modal';
 
 //importações Ui
 import Logo from './ui/Logo';
@@ -79,6 +80,7 @@ const TEMPLATES = {
   HEADER: props => <Header config={props.config} />,
   PRODUCT: props => <ProductPanel config={props.config} />,
   REQUEST: props => <RequestPanel config={props.config} />,
+  MODAL: props => <Modal config={props.config} />,
 };
 
 const UI = {

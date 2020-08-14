@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./styles.css";
 
-import { UI, ASSETS, CONFIG } from "../../summary";
+import { UI, ASSETS, CONFIG, TEMPLATES } from "../../summary";
 
-import { Navegar, Logout } from '../../util';
+import { Navegar, Logout, getSession } from '../../util';
 
 import { 
   FiSearch, 
@@ -12,7 +12,8 @@ import {
   FiMessageCircle, 
   FiUser, 
   FiChevronDown,
-  FiX 
+  FiX ,
+  FiXCircle
 } from 'react-icons/fi';
 
 export default props => {
@@ -22,11 +23,54 @@ export default props => {
     search 
   } = props.config;
 
-  const [menu, setMenu] = useState({
+  const [states, setStates] = useState({
     display: 'none',
     right: '0px',
-    idMenu: 0
+    idMenu: 0,
+    modal: 'none'
   });
+
+  const [user, setUser] = useState({});
+
+  //const user = getSession();
+
+  useEffect(()=>{
+    let session = getSession();
+
+    if(session){ 
+      setUser(session);
+    }else{
+
+      setUser({...user, error: true});
+
+      setStates({...states, modal: 'flex'});
+
+      //Navegar(history, '/');
+    }
+
+
+  }, []);
+
+  
+  const alertLogin = <>
+    <TEMPLATES.PANEL config={{
+      style: {
+        margin: '100px auto',
+        height: '37%',
+        width: '400px',
+        padding: '60px 30px'
+      },
+      children: <>
+        <h1>Problema no login</h1>
+        <p style={{marginTop: '10px'}}>Você precisa efetuar o login para acessar essa tela.</p>
+        <UI.BUTTON config={{
+          text: 'Ir para o login',
+          onClick: () => Navegar(history, '/')
+        }}/>
+      </>
+    }}/>
+  </>;
+
 
   const menus = [
     <>
@@ -35,6 +79,14 @@ export default props => {
         className: 'secondary-button',
         text: 'Sair',
         onClick: () => Logout(history)
+      }}/>
+    </>,
+    <>
+      <h6>{user.name ? user.name : 'Olá, seja bem vindo ao IBurguer'}</h6>
+      <UI.BUTTON config={{
+        className: 'secondary-button',
+        text: 'Editar Perfil',
+        onClick: () => setStates({...states, modal: 'flex'})
       }}/>
     </>,
   ];
@@ -90,9 +142,9 @@ export default props => {
           className: "btn-header",
           icon: <FiBell size={24} color="#4b5558" />,
 
-          onClick: () => setMenu({
-            ...menu, 
-            display: menu.display === 'none' ? 'flex' : '',
+          onClick: () => setStates({
+            ...states, 
+            display: states.display === 'none' ? 'flex' : '',
             right: '200px'
           })
         }}
@@ -103,9 +155,9 @@ export default props => {
           className: "btn-header",
           icon: <FiMessageCircle size={24} color="#4b5558" />,
 
-          onClick: () => setMenu({
-            ...menu, 
-            display: menu.display === 'none' ? 'flex' : '',
+          onClick: () => setStates({
+            ...states, 
+            display: states.display === 'none' ? 'flex' : '',
             right: '136px'
           })
         }}
@@ -120,10 +172,11 @@ export default props => {
             <FiUser size={24} color="#4b5558" />
           ,
 
-          onClick: () => setMenu({
-            ...menu, 
-            display: menu.display === 'none' ? 'flex' : '',
-            right: '68px'
+          onClick: () => setStates({
+            ...states, 
+            display: states.display === 'none' ? 'flex' : '',
+            right: '68px',
+            idMenu: 1
           })
         }}
       />
@@ -132,20 +185,21 @@ export default props => {
         config={{
           className: "btn-header-sm",
           icon: <FiChevronDown size={24} color="#4b5558" />,
-          onClick: () => setMenu({
-            ...menu, 
-            display: menu.display === 'none' ? 'flex' : '',
-            right: '15px'
+          onClick: () => setStates({
+            ...states, 
+            display: states.display === 'none' ? 'flex' : '',
+            right: '15px',
+            idMenu: 0
           })
         }}
       />
 
 
       <div className="menu-app" style={{
-        display: menu.display
+        display: states.display
       }}>
         <div className="menu-aba" style={{
-          right: menu.right
+          right: states.right
         }}></div>
         
         <div className="menu-app-header">
@@ -153,8 +207,8 @@ export default props => {
             config={{
             className: "btn-header-sm",
             icon: <FiX size={24} color="#4b5558" />,
-            onClick: () => setMenu({
-              ...menu, 
+            onClick: () => setStates({
+              ...states, 
               display: 'none',
               idMenu: 0
             })
@@ -164,10 +218,120 @@ export default props => {
 
         <div className="menu-app-content">
           {
-            menus[menu.idMenu]
+            menus[states.idMenu]
           }
         </div>
       </div>
+
+      <TEMPLATES.MODAL config={{
+        style: {
+          display: 'flex' //states.modal,
+        },
+        children: [
+          <TEMPLATES.ROW key={0} config={{
+            style:{
+              height: '100%'
+            },
+            children: user.error ? alertLogin :
+            <>
+              <TEMPLATES.PANEL config={{
+                style:{
+                  margin: 'auto auto',
+                  height: '80%',
+                  width: '400px',
+                  padding: '0'
+                },
+                children: <>
+                  <TEMPLATES.ROW config={{
+                    style:{
+                      height: '10%',
+                      justifyContent: 'flex-end',
+                      paddingTop: '10px',
+                      marginBottom: '5px'
+                    },
+                    children: <>
+                      <UI.BUTTON key={0} config={{
+                        className: "btn-header",
+                        icon: <FiXCircle size={24} color="#4b5558" />,
+                        onClick: () => setStates({...states, modal:'none'})
+                      }} />
+                    </>
+                  }} />
+
+                  <h1 style={{margin: '20px' }}>Editar Perfil</h1>
+                  <UI.UPLOAD config={{
+                    className: 'upload-perfil',
+                    legend: 'Alterar foto',
+                    img: ASSETS.ARTESANAL
+                  }}/>
+                  <TEMPLATES.ROW config={{
+                    style: {
+                      padding: '20px'
+                    },
+                    children: <>
+                      <UI.INPUT config={{
+                        id: 'title',
+                        className: 'input-box-body',
+                        placeholder: 'Adicione um título',
+                      }}/>
+                    </>
+                  }}/>
+                  
+
+                </>
+              }}/>
+            </>
+            /*
+            [
+              <TEMPLATES.PANEL key={0} config={{
+                style:{
+                  margin: 'auto auto',
+                  height: '80%',
+                  width: '80%',
+                  padding: '30px'
+                },
+                children:[
+                  <TEMPLATES.ROW key={0} config={{
+                    style: {
+                      height: '15%',
+                      justifyContent: 'flex-end',
+                    },
+                    children: [
+                      <UI.BUTTON key={0} config={{
+                        className: "btn-header",
+                        icon: <FiXCircle size={24} color="#4b5558" />,
+                        onClick: () => setStates({...states, modal:'none'})
+                      }} />,
+                    ]
+                  }} />,
+                  <TEMPLATES.ROW key={1} config={{
+                    style: {
+                      height: '85%',
+                      padding: '40px',
+                      paddingTop: '0px'
+                    },
+                    children: 
+                    <>
+                      <TEMPLATES.ROW config={{
+                        style: {
+                        height: '20%',
+                        padding: '40px',
+                        paddingTop: '0px'
+                        },
+                        children: <>
+                          <h3>Editar Perfil</h3>
+                          <p>As informações abaixo permitem que as pessoas conheçam você</p>
+                        </>,
+                      }} />
+                    </>
+                  }}/>
+                ]
+              }}/>
+            ]
+            */
+          }}/>
+        ]
+      }}/>
       
     </>
   );

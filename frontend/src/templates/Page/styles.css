@@ -52,20 +52,3 @@
 
   z-index: 100;
 }
-
-.modal{
-  width: 100vw;
-  height: 100vh;
-
-  flex-wrap: wrap;
-  flex-direction: column;
-
-  background: rgba(0,0,0,0.5);
-
-  display: none;
-
-  z-index: 1000;
-
-  position: absolute;
-}
-
